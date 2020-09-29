@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [Филипп Попов](https://up.htmlacademy.ru/react/5/user/1245555).
-* Наставник: `Неизвестно`.
+* Наставник: [Ruslan Malogulko](https://htmlacademy.ru/profile/id9728).
 
 ---
 
