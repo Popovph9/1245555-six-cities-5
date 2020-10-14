@@ -7,22 +7,43 @@ import Favorites from "../favorites/favorites";
 import OfferScreen from "../offer-screen/offer-screen";
 
 const App = (props) => {
-  const {offersCount} = props;
+  const {offersCount, offersMocks} = props;
 
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/">
-          <MainPage offersCount = {offersCount}/>
+        <Route exact
+          path="/"
+          render={({history}) => (
+            <MainPage
+              offersCount = {offersCount}
+              offersMocks = {offersMocks}
+              onEmailClick = {() => history.push(`/favorites`)}
+              onCardClick = {() => history.push(`/offer`)}
+            />
+          )}>
         </Route>
         <Route exact path="/login">
           <LoginScreen/>
         </Route>
-        <Route exact path="/favorites">
-          <Favorites/>
+        <Route exact
+          path="/favorites"
+          render={({history}) => (
+            <Favorites
+              offersMocks = {offersMocks}
+              onLogoClick = {() => history.push(`/`)}
+            />
+          )}>
         </Route>
-        <Route exact path="/offer/:id?">
-          <OfferScreen/>
+        <Route exact
+          path="/offer"
+          render={({history}) => (
+            <OfferScreen
+              offersMocks = {offersMocks[0]}
+              onEmailClick = {() => history.push(`/favorites`)}
+              onLogoClick = {() => history.push(`/`)}
+            />
+          )}>
         </Route>
       </Switch>
     </BrowserRouter>
@@ -31,6 +52,7 @@ const App = (props) => {
 
 App.propTypes = {
   offersCount: PropTypes.number.isRequired,
+  offersMocks: PropTypes.array.isRequired,
 };
 
 export default App;
