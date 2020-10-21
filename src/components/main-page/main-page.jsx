@@ -1,6 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import OfferList from "../offer-list/offer-list";
+import Map from "../map/map";
+import {AMSTER_COORDS} from "../../const";
+import offersProp from "../../mocks/offers.prop";
 
 const MainPage = (props) => {
   const {offersCount, offersMocks, onEmailClick, onCardClick} = props;
@@ -105,7 +108,12 @@ const MainPage = (props) => {
               />
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <section className="cities__map map" width="100%" height="100%">
+                <Map
+                  coords = {AMSTER_COORDS}
+                  offersMocks = {offersMocks}
+                />
+              </section>
             </div>
           </div>
         </div>
@@ -116,7 +124,7 @@ const MainPage = (props) => {
 
 MainPage.propTypes = {
   offersCount: PropTypes.number.isRequired,
-  offersMocks: PropTypes.array.isRequired,
+  offersMocks: offersProp,
   onEmailClick: PropTypes.func.isRequired,
   onCardClick: PropTypes.func.isRequired,
 };
