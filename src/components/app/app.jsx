@@ -5,6 +5,7 @@ import MainPage from "../main-page/main-page";
 import LoginScreen from "../login-screen/login-screen";
 import Favorites from "../favorites/favorites";
 import OfferScreen from "../offer-screen/offer-screen";
+import offersProp from "../../mocks/offers.prop";
 
 const App = (props) => {
   const {offersCount, offersMocks} = props;
@@ -52,7 +53,7 @@ const App = (props) => {
 
 App.propTypes = {
   offersCount: PropTypes.number.isRequired,
-  offersMocks: PropTypes.array.isRequired,
+  offersMocks: offersProp,
 };
 
 export default App;

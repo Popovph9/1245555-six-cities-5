@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import OfferCard from "../offer-card/offer-card";
+import offersProp from "../../mocks/offers.prop";
 
 class OfferList extends PureComponent {
   constructor(props) {
@@ -28,7 +29,7 @@ class OfferList extends PureComponent {
 }
 
 OfferList.propTypes = {
-  offersMocks: PropTypes.array.isRequired,
+  offersMocks: offersProp,
   onCardClick: PropTypes.func.isRequired,
 };
 

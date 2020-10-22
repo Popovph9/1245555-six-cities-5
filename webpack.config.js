@@ -13,16 +13,28 @@ module.exports = {
         historyApiFallback: true
     },
     module: {
-        rules: [
+      rules: [
+        {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader']
+        },
+        {
+          test: /\.(png|jpg|gif)$/i,
+          use: [
             {
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                },
-            }
-        ],
-    },
+              loader: 'url-loader',
+            },
+          ],
+        },
+        {
+            test: /\.(js|jsx)$/,
+            exclude: /node_modules/,
+            use: {
+                loader: 'babel-loader',
+            },
+        },
+      ],
+  },
     resolve: {
         extensions: ['.js', '.jsx']
     },

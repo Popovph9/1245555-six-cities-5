@@ -28,6 +28,8 @@ const DESCRIPTIONS = [`Lorem ipsum dolor sit amet, consectetur adipiscing elit.`
 const HOST_AVATAR = `img/avatar-angelina.jpg`;
 const HOST_NAME = `Angelina`;
 
+const COORDS = [[52.3909553943508, 4.85309666406198], [52.369553943508, 4.85309666406198], [52.3909553943508, 4.929309666406198], [52.3809553943508, 4.939309666406198]];
+
 const generatePicture = () => {
   return FLAT_PHOTOS[getRandomIndex(FLAT_PHOTOS)];
 };
@@ -78,10 +80,15 @@ const generateReviews = () => {
   return new Array(getRandomInteger(0, REVIEWS_COUNT)).fill().map(generateReview);
 };
 
+const generateCoords = () => {
+  return COORDS[getRandomIndex(COORDS)];
+};
+
 const generateFlatOffers = () => {
 
   return {
     id: generateId(),
+    coords: generateCoords(),
     picture: generatePicture(),
     photos: generatePhotos(),
     headline: `Beautiful studio`,

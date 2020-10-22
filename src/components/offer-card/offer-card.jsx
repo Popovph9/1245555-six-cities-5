@@ -2,6 +2,8 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {getRating} from "../../utils";
 import {STAR_WIDTH} from "../../const";
+import offersProp from "../../mocks/offers.prop";
+
 
 class OfferCard extends PureComponent {
   constructor(props) {
@@ -61,20 +63,7 @@ class OfferCard extends PureComponent {
 }
 
 OfferCard.propTypes = {
-  offersMocks: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    picture: PropTypes.string.isRequired,
-    photos: PropTypes.array.isRequired,
-    headline: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    bedrooms: PropTypes.number.isRequired,
-    guests: PropTypes.number.isRequired,
-    offers: PropTypes.array.isRequired,
-    isPremium: PropTypes.bool.isRequired,
-  })).isRequired,
+  offersMocks: offersProp,
   onHover: PropTypes.func.isRequired,
   onCardClick: PropTypes.func.isRequired,
 };
