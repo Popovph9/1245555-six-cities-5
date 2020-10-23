@@ -40,7 +40,9 @@ const App = (props) => {
           path="/offer"
           render={({history}) => (
             <OfferScreen
-              offersMocks = {offersMocks[0]}
+              offersMocks = {offersMocks}
+              onCardClick = {() => history.push(`/offer`)}
+              currentOffer = {offersMocks[0]}
               onEmailClick = {() => history.push(`/favorites`)}
               onLogoClick = {() => history.push(`/`)}
             />

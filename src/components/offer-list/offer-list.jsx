@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import OfferCard from "../offer-card/offer-card";
 import offersProp from "../../mocks/offers.prop";
+import CitiesOfferCard from "../cities-offer-card/cities-offer-card";
 
 class OfferList extends PureComponent {
   constructor(props) {
@@ -11,14 +11,14 @@ class OfferList extends PureComponent {
   }
 
   render() {
-    const {offersMocks, onCardClick} = this.props;
+    const {offersMocks, onCardClick, className} = this.props;
     const onHover = (value) => {
       this.setState(value);
     };
 
     return (
-      <div className="cities__places-list places__list tabs__content">
-        <OfferCard
+      <div className={`${className} places__list `}>
+        <CitiesOfferCard
           offersMocks = {offersMocks}
           onHover = {onHover}
           onCardClick = {onCardClick}
@@ -31,6 +31,7 @@ class OfferList extends PureComponent {
 OfferList.propTypes = {
   offersMocks: offersProp,
   onCardClick: PropTypes.func.isRequired,
+  className: PropTypes.string.isRequired,
 };
 
 export default OfferList;

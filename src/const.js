@@ -13,3 +13,13 @@ export const PIN_URL = `img/pin.svg`;
 export const PIN_ACTIVE_URL = `img/pin-active.svg`;
 
 export const PIN_SIZES = [30, 30];
+
+export const RENDERED_REVIEWS = 10;
+
+export const CITIES_CLASS = `cities__places-list tabs__content`;
+
+export const PLACES_CLASS = `near-places__list`;
+
+export const CITIES_SUBCLASS = `cities`;
+
+export const PLACES_SUBCLASS = `near-places`;

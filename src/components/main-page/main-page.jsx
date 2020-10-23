@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import OfferList from "../offer-list/offer-list";
+import CitiesOfferList from "../cities-offer-list/cities-offer-list";
 import Map from "../map/map";
 import {AMSTER_COORDS} from "../../const";
 import offersProp from "../../mocks/offers.prop";
@@ -102,13 +102,13 @@ const MainPage = (props) => {
                 </select>
                 </div> */}
               </form>
-              <OfferList
+              <CitiesOfferList
                 offersMocks = {offersMocks}
                 onCardClick = {onCardClick}
               />
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map" width="100%" height="100%">
+              <section className="cities__map map">
                 <Map
                   coords = {AMSTER_COORDS}
                   offersMocks = {offersMocks}
