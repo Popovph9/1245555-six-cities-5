@@ -11,7 +11,7 @@ class OfferList extends PureComponent {
   }
 
   render() {
-    const {offersMocks, onCardClick, className} = this.props;
+    const {offers, onCardClick, className} = this.props;
     const onHover = (value) => {
       this.setState(value);
     };
@@ -19,7 +19,7 @@ class OfferList extends PureComponent {
     return (
       <div className={`${className} places__list `}>
         <CitiesOfferCard
-          offersMocks = {offersMocks}
+          offers = {offers}
           onHover = {onHover}
           onCardClick = {onCardClick}
         />
@@ -29,7 +29,7 @@ class OfferList extends PureComponent {
 }
 
 OfferList.propTypes = {
-  offersMocks: offersProp,
+  offers: offersProp,
   onCardClick: PropTypes.func.isRequired,
   className: PropTypes.string.isRequired,
 };

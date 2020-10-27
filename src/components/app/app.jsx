@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MainPage from "../main-page/main-page";
 import LoginScreen from "../login-screen/login-screen";
@@ -8,7 +7,7 @@ import OfferScreen from "../offer-screen/offer-screen";
 import offersProp from "../../mocks/offers.prop";
 
 const App = (props) => {
-  const {offersCount, offersMocks} = props;
+  const {offersMocks} = props;
 
   return (
     <BrowserRouter>
@@ -17,8 +16,6 @@ const App = (props) => {
           path="/"
           render={({history}) => (
             <MainPage
-              offersCount = {offersCount}
-              offersMocks = {offersMocks}
               onEmailClick = {() => history.push(`/favorites`)}
               onCardClick = {() => history.push(`/offer`)}
             />
@@ -54,7 +51,6 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  offersCount: PropTypes.number.isRequired,
   offersMocks: offersProp,
 };
 

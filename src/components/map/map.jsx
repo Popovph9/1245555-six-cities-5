@@ -2,7 +2,6 @@
 import React, {PureComponent} from "react";
 import L from "leaflet";
 import 'leaflet/dist/leaflet.css';
-import PropTypes from "prop-types";
 import {PIN_URL, PIN_ACTIVE_URL, PIN_SIZES} from "../../const";
 import offersProp from "../../mocks/offers.prop";
 
@@ -18,29 +17,33 @@ class Map extends PureComponent {
   }
 
   componentDidMount() {
-    const {coords} = this.props;
+    const {offers} = this.props;
 
     this.setState({
-      city: coords,
+      city: [offers[0].city.location.latitude, offers[0].city.location.longitude],
     });
   }
 
   componentWillUnmount() {
     this.map.remove();
     this.map = null;
+
+    this.setState({
+      city: [],
+    });
   }
 
   componentDidUpdate() {
-    const {offersMocks} = this.props;
+    const {offers} = this.props;
 
     if (this.map !== null) {
       this.map.remove();
       this.map = null;
     }
 
-    const city = this.state.city;
+    const city = [offers[0].city.location.latitude, offers[0].city.location.longitude];
 
-    const zoom = 12;
+    const zoom = offers[0].city.location.zoom;
 
     const icon = L.icon({
       iconUrl: PIN_URL,
@@ -59,7 +62,7 @@ class Map extends PureComponent {
       attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
     }).addTo(this.map);
 
-    offersMocks.map((offer) => {
+    offers.map((offer) => {
       L.marker(offer.coords, {icon}).addTo(this.map).on(`mouseover`, (evt) => {
         evt.target._icon.src = PIN_ACTIVE_URL;
       }).on(`mouseout`, (evt) => {
@@ -76,8 +79,7 @@ class Map extends PureComponent {
 }
 
 Map.propTypes = {
-  coords: PropTypes.arrayOf(PropTypes.number).isRequired,
-  offersMocks: offersProp,
+  offers: offersProp,
 };
 
 export default Map;

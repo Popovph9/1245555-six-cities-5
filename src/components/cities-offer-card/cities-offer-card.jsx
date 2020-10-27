@@ -5,12 +5,12 @@ import {CITIES_SUBCLASS} from "../../const";
 import offersProp from "../../mocks/offers.prop";
 
 const CitiesOfferCard = (props) => {
-  const {offersMocks, onHover, onCardClick} = props;
+  const {offers, onHover, onCardClick} = props;
 
   return (
     <OfferCard
       className = {CITIES_SUBCLASS}
-      offersMocks = {offersMocks}
+      offers = {offers}
       onHover = {onHover}
       onCardClick = {onCardClick}
     />
@@ -18,7 +18,7 @@ const CitiesOfferCard = (props) => {
 };
 
 CitiesOfferCard.propTypes = {
-  offersMocks: offersProp,
+  offers: offersProp,
   onHover: PropTypes.func.isRequired,
   onCardClick: PropTypes.func.isRequired,
 };

@@ -1,4 +1,4 @@
-import {FLAT_TYPES, FLAT_OFFERS, FLAT_PHOTOS} from "../const";
+import {FLAT_TYPES, FLAT_OFFERS, FLAT_PHOTOS, CITIES} from "../const";
 import {generateId, getRandomIndex, getRandomInteger, getRandomArray} from "./randomize";
 
 const MIN_PRICE = 50;
@@ -13,7 +13,7 @@ const MAX_BEDROOMS = 4;
 const MIN_GUESTS = 1;
 const MAX_GUESTS = 5;
 
-const OFFERS_COUNT = 4;
+const OFFERS_COUNT = 10;
 
 const REVIEWS_COUNT = 4;
 
@@ -84,10 +84,15 @@ const generateCoords = () => {
   return COORDS[getRandomIndex(COORDS)];
 };
 
+const generateCity = () => {
+  return CITIES[getRandomIndex(CITIES)];
+};
+
 const generateFlatOffers = () => {
 
   return {
     id: generateId(),
+    city: generateCity(),
     coords: generateCoords(),
     picture: generatePicture(),
     photos: generatePhotos(),
