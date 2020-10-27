@@ -10,7 +10,7 @@ const PlacesOfferList = (props) => {
   return (
     <OfferList
       className = {PLACES_CLASS}
-      offersMocks = {offersMocks}
+      offers = {offersMocks}
       onCardClick = {onCardClick}
     />
   );

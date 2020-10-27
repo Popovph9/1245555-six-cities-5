@@ -11,11 +11,11 @@ class OfferCard extends PureComponent {
   }
 
   render() {
-    const {className, offersMocks, onHover, onCardClick} = this.props;
+    const {className, offers, onHover, onCardClick} = this.props;
 
     return (
       <React.Fragment>
-        {offersMocks.map((offer, i) => (
+        {offers.map((offer, i) => (
           <article
             key={`${i}`}
             className={`${className}__place-card place-card`}
@@ -64,7 +64,7 @@ class OfferCard extends PureComponent {
 
 OfferCard.propTypes = {
   className: PropTypes.string.isRequired,
-  offersMocks: offersProp,
+  offers: offersProp,
   onHover: PropTypes.func.isRequired,
   onCardClick: PropTypes.func.isRequired,
 };
