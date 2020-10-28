@@ -1,5 +1,6 @@
 
 import React, {PureComponent} from "react";
+import PropTypes from "prop-types";
 import L from "leaflet";
 import 'leaflet/dist/leaflet.css';
 import {PIN_URL, PIN_ACTIVE_URL, PIN_SIZES} from "../../const";
@@ -34,7 +35,7 @@ class Map extends PureComponent {
   }
 
   componentDidUpdate() {
-    const {offers} = this.props;
+    const {offers, activePin} = this.props;
 
     if (this.map !== null) {
       this.map.remove();
@@ -69,6 +70,22 @@ class Map extends PureComponent {
         evt.target._icon.src = PIN_URL;
       });
     });
+
+    if (activePin) {
+      const iconOptions = {
+        iconUrl: PIN_ACTIVE_URL,
+        iconSize: PIN_SIZES,
+      };
+
+      const customIcon = L.icon(iconOptions);
+
+      const markerOptions = {
+        icon: customIcon
+      };
+
+      const marker = L.marker(activePin, markerOptions);
+      marker.addTo(this.map);
+    }
   }
 
   render() {
@@ -80,6 +97,7 @@ class Map extends PureComponent {
 
 Map.propTypes = {
   offers: offersProp,
+  activePin: PropTypes.array
 };
 
 export default Map;

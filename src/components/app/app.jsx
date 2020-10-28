@@ -1,5 +1,6 @@
 import React from "react";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {connect} from "react-redux";
 import MainPage from "../main-page/main-page";
 import LoginScreen from "../login-screen/login-screen";
 import Favorites from "../favorites/favorites";
@@ -28,7 +29,7 @@ const App = (props) => {
           path="/favorites"
           render={({history}) => (
             <Favorites
-              offersMocks = {offersMocks}
+              offers = {offersMocks}
               onLogoClick = {() => history.push(`/`)}
             />
           )}>
@@ -37,7 +38,7 @@ const App = (props) => {
           path="/offer"
           render={({history}) => (
             <OfferScreen
-              offersMocks = {offersMocks}
+              offers = {offersMocks}
               onCardClick = {() => history.push(`/offer`)}
               currentOffer = {offersMocks[0]}
               onEmailClick = {() => history.push(`/favorites`)}
@@ -54,4 +55,9 @@ App.propTypes = {
   offersMocks: offersProp,
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  offersMocks: state.offersMocks,
+});
+
+export {App};
+export default connect(mapStateToProps)(App);

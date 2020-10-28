@@ -5,19 +5,19 @@ import offersProp from "../../mocks/offers.prop";
 import {PLACES_CLASS} from "../../const";
 
 const PlacesOfferList = (props) => {
-  const {offersMocks, onCardClick} = props;
+  const {offers, onCardClick} = props;
 
   return (
     <OfferList
       className = {PLACES_CLASS}
-      offers = {offersMocks}
+      offers = {offers}
       onCardClick = {onCardClick}
     />
   );
 };
 
 PlacesOfferList.propTypes = {
-  offersMocks: offersProp,
+  offers: offersProp,
   onCardClick: PropTypes.func.isRequired,
 };
 

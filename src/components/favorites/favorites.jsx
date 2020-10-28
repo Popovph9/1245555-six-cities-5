@@ -10,7 +10,7 @@ class Favorites extends PureComponent {
   }
 
   render() {
-    const {offersMocks, onLogoClick} = this.props;
+    const {offers, onLogoClick} = this.props;
 
     return (
       <div className="page">
@@ -56,7 +56,7 @@ class Favorites extends PureComponent {
                   </div>
                   <div className="favorites__places">
 
-                    {offersMocks.map((offer, i) => (
+                    {offers.map((offer, i) => (
                       <article key={`${i}`} className="favorites__card place-card">
                         <div className="favorites__image-wrapper place-card__image-wrapper">
                           <a href="#">
@@ -106,7 +106,7 @@ class Favorites extends PureComponent {
 }
 
 Favorites.propTypes = {
-  offersMocks: offersProp,
+  offers: offersProp,
   onLogoClick: PropTypes.func.isRequired,
 };
 
