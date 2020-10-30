@@ -1,4 +1,6 @@
 import React, {PureComponent} from "react";
+import {connect} from "react-redux";
+import {ActionCreator} from "../../store/action";
 import PropTypes from "prop-types";
 import {getRating} from "../../utils";
 import {STAR_WIDTH} from "../../const";
@@ -11,7 +13,7 @@ class OfferCard extends PureComponent {
   }
 
   render() {
-    const {className, offers, onHover, onCardClick} = this.props;
+    const {className, offers, onHover, onCardClick, setActivePin, resetActivePin} = this.props;
 
     return (
       <React.Fragment>
@@ -19,7 +21,11 @@ class OfferCard extends PureComponent {
           <article
             key={`${i}`}
             className={`${className}__place-card place-card`}
-            onMouseEnter={() => onHover(offer)}
+            onMouseEnter={() => {
+              onHover(offer);
+              setActivePin(offer);
+            }}
+            onMouseLeave={resetActivePin}
             onClick={onCardClick}
           >
             {offer.isPremium ?
@@ -67,6 +73,18 @@ OfferCard.propTypes = {
   offers: offersProp,
   onHover: PropTypes.func.isRequired,
   onCardClick: PropTypes.func.isRequired,
+  setActivePin: PropTypes.func.isRequired,
+  resetActivePin: PropTypes.func.isRequired,
 };
 
-export default OfferCard;
+const mapDispatchToProps = (dispatch) => ({
+  setActivePin(offer) {
+    dispatch(ActionCreator.setActivePin(offer));
+  },
+  resetActivePin() {
+    dispatch(ActionCreator.resetActivePin());
+  },
+});
+
+export {OfferCard};
+export default connect(null, mapDispatchToProps)(OfferCard);

@@ -1,6 +1,11 @@
+
 export const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
   GET_OFFERS: `GET_OFFERS`,
+  CHANGE_SORTING: `CHANGE_SORTING`,
+  SORT_OFFERS: `SORT_OFFERS`,
+  SET_ACTIVE_PIN: `SET_ACTIVE_PIN`,
+  RESET_ACTIVE_PIN: `SET_ACTIVE_PIN`,
 };
 
 export const ActionCreator = {
@@ -10,5 +15,20 @@ export const ActionCreator = {
   }),
   getOffers: () => ({
     type: ActionType.GET_OFFERS,
+  }),
+  changeSorting: (evt) => ({
+    type: ActionType.CHANGE_SORTING,
+    payload: evt.target.textContent,
+  }),
+  sortOffers: (evt) => ({
+    type: ActionType.SORT_OFFERS,
+    payload: evt.target.textContent,
+  }),
+  setActivePin: (offer) => ({
+    type: ActionType.SET_ACTIVE_PIN,
+    payload: offer.coords,
+  }),
+  resetActivePin: () => ({
+    type: ActionType.RESET_ACTIVE_PIN,
   }),
 };

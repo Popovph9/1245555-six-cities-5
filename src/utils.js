@@ -15,3 +15,15 @@ export const getReviewDate = (date) => {
 export const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
+
+export const sortByHighPrice = (offerA, offerB) => {
+  return offerB.price - offerA.price;
+};
+
+export const sortByLowPrice = (offerA, offerB) => {
+  return offerA.price - offerB.price;
+};
+
+export const sortByRating = (offerA, offerB) => {
+  return offerB.rating - offerA.rating;
+};

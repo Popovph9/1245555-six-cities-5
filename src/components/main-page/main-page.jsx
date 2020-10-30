@@ -5,10 +5,16 @@ import {ActionCreator} from "../../store/action";
 import CitiesOfferList from "../cities-offer-list/cities-offer-list";
 import Map from "../map/map";
 import CitiesList from "../cities-list/cities-list";
+import SortingList from "../sorting-list/sorting-list";
+import OffersPlaceholder from "../offers-placeholder/offers-placeholder";
 import offersProp from "../../mocks/offers.prop";
 
+const EMPTY_PAGE_CLASSNAME = `page__main page__main--index page__main--index-empty`;
+const MAIN_PAGE_CLASSNAME = `page__main page__main--index`;
+
+
 const MainPage = (props) => {
-  const {offersMocks, onEmailClick, onCardClick, offers, city, changeCity, getOffers} = props;
+  const {onEmailClick, onCardClick, offers, city, changeCity, currentSorting, changeSorting, getOffers, sortOffers, activePin} = props;
 
   return (
     <div className="page page--gray page--main">
@@ -35,12 +41,11 @@ const MainPage = (props) => {
         </div>
       </header>
 
-      <main className="page__main page__main--index">
+      <main className={offers.length === 0 ? EMPTY_PAGE_CLASSNAME : MAIN_PAGE_CLASSNAME}>
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
             <CitiesList
-              offersMocks = {offersMocks}
               currentCity = {city}
               getCity = {changeCity}
               getOffers = {getOffers}
@@ -48,49 +53,32 @@ const MainPage = (props) => {
           </section>
         </div>
         <div className="cities">
-          <div className="cities__places-container container">
-            <section className="cities__places places">
-              <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{offers.length} place{offers.length === 1 ? `` : `s`} to stay in {city}</b>
-              <form className="places__sorting" action="#" method="get">
-                <span className="places__sorting-caption">Sort by</span>
-                <span className="places__sorting-type" tabIndex="0">
-                  Popular
+          {offers.length === 0 ? <OffersPlaceholder city = {city}/>
+            : <div className="cities__places-container container">
+              <section className="cities__places places">
+                <h2 className="visually-hidden">Places</h2>
+                <b className="places__found">{offers.length} place{offers.length === 1 ? `` : `s`} to stay in {city}</b>
 
-                  <svg className="places__sorting-arrow" width="7" height="4">
-                    <use xlinkHref="#icon-arrow-select"></use>
-                  </svg>
+                <SortingList
+                  currentSorting = {currentSorting}
+                  changeSorting = {changeSorting}
+                  sortOffers = {sortOffers}
+                />
 
-
-                </span>
-                <ul className="places__options places__options--custom places__options--opened">
-                  <li className="places__option places__option--active" tabIndex="0">Popular</li>
-                  <li className="places__option" tabIndex="0">Price: low to high</li>
-                  <li className="places__option" tabIndex="0">Price: high to low</li>
-                  <li className="places__option" tabIndex="0">Top rated first</li>
-                </ul>
-                {/* </div>
-                <select className="places__sorting-type" id="places-sorting">
-                  <option className="places__option" value="popular" selected="">Popular</option>
-                  <option className="places__option" value="to-high">Price: low to high</option>
-                  <option className="places__option" value="to-low">Price: high to low</option>
-                  <option className="places__option" value="top-rated">Top rated first</option>
-                </select>
-                </div> */}
-              </form>
-              <CitiesOfferList
-                offers = {offers}
-                onCardClick = {onCardClick}
-              />
-            </section>
-            <div className="cities__right-section">
-              <section className="cities__map map">
-                <Map
+                <CitiesOfferList
                   offers = {offers}
+                  onCardClick = {onCardClick}
                 />
               </section>
-            </div>
-          </div>
+              <div className="cities__right-section">
+                <section className="cities__map map">
+                  <Map
+                    offers = {offers}
+                    activePin = {activePin}
+                  />
+                </section>
+              </div>
+            </div>}
         </div>
       </main>
     </div>
@@ -98,19 +86,23 @@ const MainPage = (props) => {
 };
 
 MainPage.propTypes = {
-  offersMocks: offersProp,
   city: PropTypes.string.isRequired,
+  currentSorting: PropTypes.string.isRequired,
   offers: offersProp,
   changeCity: PropTypes.func.isRequired,
+  changeSorting: PropTypes.func.isRequired,
   onEmailClick: PropTypes.func.isRequired,
   onCardClick: PropTypes.func.isRequired,
   getOffers: PropTypes.func.isRequired,
+  sortOffers: PropTypes.func.isRequired,
+  activePin: PropTypes.array
 };
 
 const mapStateToProps = (state) => ({
-  offersMocks: state.offersMocks,
   city: state.city,
+  currentSorting: state.currentSorting,
   offers: state.offers,
+  activePin: state.activePin
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -119,6 +111,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getOffers() {
     dispatch(ActionCreator.getOffers());
+  },
+  changeSorting(evt) {
+    dispatch(ActionCreator.changeSorting(evt));
+  },
+  sortOffers(evt) {
+    dispatch(ActionCreator.sortOffers(evt));
   },
 });
 

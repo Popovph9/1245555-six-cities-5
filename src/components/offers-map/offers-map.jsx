@@ -31,7 +31,7 @@ class OffersMap extends PureComponent {
   }
 
   componentDidUpdate() {
-    const {offersMocks, currentOffer} = this.props;
+    const {offers, currentOffer} = this.props;
 
     if (this.map !== null) {
       this.map.remove();
@@ -70,7 +70,7 @@ class OffersMap extends PureComponent {
       attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
     }).addTo(this.map);
 
-    offersMocks.slice(0, 3).map((offer) => {
+    offers.slice(0, 3).map((offer) => {
       L.marker(offer.coords, {icon}).addTo(this.map);
     });
 
@@ -88,7 +88,7 @@ class OffersMap extends PureComponent {
 
 OffersMap.propTypes = {
   coords: PropTypes.arrayOf(PropTypes.number).isRequired,
-  offersMocks: offersProp,
+  offers: offersProp,
   currentOffer: currentOfferProp,
 };
 

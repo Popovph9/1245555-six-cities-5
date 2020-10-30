@@ -24,6 +24,16 @@ export const CITIES_SUBCLASS = `cities`;
 
 export const PLACES_SUBCLASS = `near-places`;
 
+export const DEFAULT_SORTING = `Popular`;
+
+export const HIGHT_PRICE_SORTING = `Price: high to low`;
+
+export const LOW_PRICE_SORTING = `Price: low to high`;
+
+export const RATING_SORTING = `Top rated first`;
+
+export const CITIES_NAMES = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
+
 export const CITIES = [{
   location: {
     latitude: 48.8586,

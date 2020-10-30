@@ -1,17 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
-import offersProp from "../../mocks/offers.prop";
+import {CITIES_NAMES} from "../../const";
+
+const ACTIVE_CLASSNAME = `locations__item-link tabs__item tabs__item--active`;
+const CASUAL_CLASSNAME = `locations__item-link tabs__item`;
 
 const CitiesList = (props) => {
-  const {offersMocks, currentCity, getCity, getOffers} = props;
-
-  const uniqueCities = Array.from(new Set(offersMocks.map((it) => it.city.name)));
+  const {currentCity, getCity, getOffers} = props;
 
   return (
     <ul className="locations__list tabs__list">
-      {uniqueCities.map((it, i) => (
+      {CITIES_NAMES.map((it, i) => (
         <li key={`locations__item-${i}`} className="locations__item">
-          <a onClick={getOffers} className={it === currentCity ? `locations__item-link tabs__item tabs__item--active` : `locations__item-link tabs__item`} href="#">
+          <a onClick={getOffers} className={it === currentCity ? ACTIVE_CLASSNAME : CASUAL_CLASSNAME} href="#">
             <span onClick={getCity}>{it}</span>
           </a>
         </li>
@@ -21,7 +22,6 @@ const CitiesList = (props) => {
 };
 
 CitiesList.propTypes = {
-  offersMocks: offersProp,
   currentCity: PropTypes.string.isRequired,
   getCity: PropTypes.func.isRequired,
   getOffers: PropTypes.func.isRequired,

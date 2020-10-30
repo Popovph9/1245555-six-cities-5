@@ -11,6 +11,8 @@ import OffersMap from "../offers-map/offers-map";
 import {AMSTER_COORDS} from "../../const";
 
 const MAX_RENDERED_PHOTOS = 6;
+const STAR_CLASSNAME = `property__avatar-wrapper user__avatar-wrapper property__avatar-wrapper--pro`;
+const CASUAL_CLASSNAME = `property__avatar-wrapper user__avatar-wrapper`;
 
 class OfferScreen extends PureComponent {
   constructor(props) {
@@ -18,7 +20,7 @@ class OfferScreen extends PureComponent {
   }
 
   render() {
-    const {currentOffer, offersMocks, onEmailClick, onLogoClick, onCardClick} = this.props;
+    const {currentOffer, offers, onEmailClick, onLogoClick, onCardClick} = this.props;
 
     return (
       <div className="page">
@@ -108,7 +110,7 @@ class OfferScreen extends PureComponent {
                 <div className="property__host">
                   <h2 className="property__host-title">Meet the host</h2>
                   <div className="property__host-user user">
-                    <div className={currentOffer.host.isSuper ? `property__avatar-wrapper user__avatar-wrapper property__avatar-wrapper--pro` : `property__avatar-wrapper user__avatar-wrapper`}>
+                    <div className={currentOffer.host.isSuper ? STAR_CLASSNAME : CASUAL_CLASSNAME}>
                       <img className="property__avatar user__avatar" src={currentOffer.host.avatar} width="74" height="74" alt="Host avatar"/>
                     </div>
                     <span className="property__user-name">
@@ -137,7 +139,7 @@ class OfferScreen extends PureComponent {
             <section className="property__map map">
               <OffersMap
                 coords = {AMSTER_COORDS}
-                offersMocks = {offersMocks}
+                offers = {offers}
                 currentOffer = {currentOffer}
               />
             </section>
@@ -146,7 +148,7 @@ class OfferScreen extends PureComponent {
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighborhood</h2>
               <PlacesOfferList
-                offersMocks = {offersMocks}
+                offers = {offers}
                 onCardClick = {onCardClick}
               />
             </section>
@@ -161,7 +163,7 @@ OfferScreen.propTypes = {
   currentOffer: currentOfferProp,
   onEmailClick: PropTypes.func.isRequired,
   onLogoClick: PropTypes.func.isRequired,
-  offersMocks: offersProp,
+  offers: offersProp,
   onCardClick: PropTypes.func.isRequired,
 };
 
