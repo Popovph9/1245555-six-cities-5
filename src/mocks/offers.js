@@ -105,6 +105,7 @@ const generateFlatOffers = () => {
     guests: generateGuestsCount(),
     offers: generateOffers(),
     isPremium: Boolean(getRandomInteger(0, 1)),
+    isFavorite: Boolean(getRandomInteger(0, 1)),
     host: {
       avatar: HOST_AVATAR,
       name: HOST_NAME,

@@ -6,15 +6,16 @@ import LoginScreen from "../login-screen/login-screen";
 import Favorites from "../favorites/favorites";
 import OfferScreen from "../offer-screen/offer-screen";
 import offersProp from "../../mocks/offers.prop";
+import PropTypes from "prop-types";
 
 const App = (props) => {
-  const {offersMocks} = props;
+  const {allOffers, favoriteOffers, currentOffer} = props;
 
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact
-          path="/"
+        <Route
+          exact path="/"
           render={({history}) => (
             <MainPage
               onEmailClick = {() => history.push(`/favorites`)}
@@ -25,24 +26,25 @@ const App = (props) => {
         <Route exact path="/login">
           <LoginScreen/>
         </Route>
-        <Route exact
-          path="/favorites"
+        <Route
+          exact path="/favorites"
           render={({history}) => (
             <Favorites
-              offers = {offersMocks}
+              offers = {favoriteOffers}
               onLogoClick = {() => history.push(`/`)}
+              onCardClick = {() => history.push(`/offer/:${currentOffer.id}`)}
             />
           )}>
         </Route>
-        <Route exact
-          path="/offer"
+        <Route
+          exact path="/offer/:id?"
           render={({history}) => (
             <OfferScreen
-              offers = {offersMocks}
-              onCardClick = {() => history.push(`/offer`)}
-              currentOffer = {offersMocks[0]}
+              offers = {allOffers}
+              currentOffer = {currentOffer}
               onEmailClick = {() => history.push(`/favorites`)}
               onLogoClick = {() => history.push(`/`)}
+              onCardClick = {() => history.push(`/offer/:${currentOffer.id}`)}
             />
           )}>
         </Route>
@@ -52,11 +54,15 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  offersMocks: offersProp,
+  allOffers: offersProp,
+  favoriteOffers: offersProp,
+  currentOffer: PropTypes.object,
 };
 
 const mapStateToProps = (state) => ({
-  offersMocks: state.offersMocks,
+  allOffers: state.allOffers,
+  favoriteOffers: state.favoriteOffers,
+  currentOffer: state.currentOffer,
 });
 
 export {App};

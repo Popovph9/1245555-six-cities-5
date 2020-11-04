@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-export default PropTypes.arrayOf(PropTypes.shape({
+export default PropTypes.shape({
   id: PropTypes.number.isRequired,
   coords: PropTypes.arrayOf(PropTypes.number).isRequired,
   picture: PropTypes.string.isRequired,
@@ -14,7 +14,6 @@ export default PropTypes.arrayOf(PropTypes.shape({
   guests: PropTypes.number.isRequired,
   offers: PropTypes.array.isRequired,
   isPremium: PropTypes.bool.isRequired,
-  isFavorite: PropTypes.bool.isRequired,
   host: PropTypes.shape({
     avatar: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
@@ -27,4 +26,4 @@ export default PropTypes.arrayOf(PropTypes.shape({
     date: PropTypes.object.isRequired,
     text: PropTypes.array.isRequired,
   }))
-})).isRequired;
+}).isRequired;

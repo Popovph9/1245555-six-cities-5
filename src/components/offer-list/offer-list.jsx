@@ -1,32 +1,19 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import offersProp from "../../mocks/offers.prop";
 import CitiesOfferCard from "../cities-offer-card/cities-offer-card";
 
-class OfferList extends PureComponent {
-  constructor(props) {
-    super(props);
+const OfferList = ({offers, onCardClick, className}) => {
 
-    this.state = null;
-  }
-
-  render() {
-    const {offers, onCardClick, className} = this.props;
-    const onHover = (value) => {
-      this.setState(value);
-    };
-
-    return (
-      <div className={`${className} places__list `}>
-        <CitiesOfferCard
-          offers = {offers}
-          onHover = {onHover}
-          onCardClick = {onCardClick}
-        />
-      </div>
-    );
-  }
-}
+  return (
+    <div className={`${className} places__list `}>
+      <CitiesOfferCard
+        offers = {offers}
+        onCardClick = {onCardClick}
+      />
+    </div>
+  );
+};
 
 OfferList.propTypes = {
   offers: offersProp,
