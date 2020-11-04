@@ -1,0 +1,39 @@
+import React from "react";
+import FavoriteItem from "../favorite-item/favorite-item";
+import PropTypes from "prop-types";
+import offersProp from "../../mocks/offers.prop";
+
+const FavoriteList = ({favoriteOffers, onCardClick}) => {
+  const uniqCities = Array.from(new Set(favoriteOffers.map((it) => it.city.name)));
+
+  return (
+    uniqCities.map((city, id) => (
+      <li key={id} className="favorites__locations-items">
+        <div className="favorites__locations locations locations--current">
+          <div className="locations__item">
+            <a className="locations__item-link" href="#">
+              <span>{city}</span>
+            </a>
+          </div>
+        </div>
+        <div className="favorites__places">
+
+          {favoriteOffers.filter((offer) => offer.city.name === city).map((offer, i) => (
+            <FavoriteItem
+              key = {i}
+              offer = {offer}
+              onCardClick = {onCardClick}
+            />
+          ))}
+        </div>
+      </li>
+    ))
+  );
+};
+
+FavoriteList.propTypes = {
+  favoriteOffers: offersProp,
+  onCardClick: PropTypes.func.isRequired,
+};
+
+export default FavoriteList;

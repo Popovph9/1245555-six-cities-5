@@ -8,13 +8,15 @@ export const STAR_WIDTH = 20;
 
 export const AMSTER_COORDS = [52.38333, 4.9];
 
-export const PIN_URL = `img/pin.svg`;
+export const PIN_URL = `/img/pin.svg`;
 
-export const PIN_ACTIVE_URL = `img/pin-active.svg`;
+export const PIN_ACTIVE_URL = `/img/pin-active.svg`;
 
 export const PIN_SIZES = [30, 30];
 
 export const RENDERED_REVIEWS = 10;
+
+export const RENDERED_PINS = 10;
 
 export const CITIES_CLASS = `cities__places-list tabs__content`;
 
@@ -33,6 +35,8 @@ export const LOW_PRICE_SORTING = `Price: low to high`;
 export const RATING_SORTING = `Top rated first`;
 
 export const CITIES_NAMES = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
+
+export const DEFAULT_CITY = CITIES_NAMES[0];
 
 export const CITIES = [{
   location: {

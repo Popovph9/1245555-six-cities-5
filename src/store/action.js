@@ -6,6 +6,8 @@ export const ActionType = {
   SORT_OFFERS: `SORT_OFFERS`,
   SET_ACTIVE_PIN: `SET_ACTIVE_PIN`,
   RESET_ACTIVE_PIN: `SET_ACTIVE_PIN`,
+  GET_CURRENT_OFFER: `GET_CURRENT_OFFER`,
+  CHANGE_FAVORITE: `CHANGE_FAVORITE`,
 };
 
 export const ActionCreator = {
@@ -30,5 +32,13 @@ export const ActionCreator = {
   }),
   resetActivePin: () => ({
     type: ActionType.RESET_ACTIVE_PIN,
+  }),
+  getCurrentOffer: (offer) => ({
+    type: ActionType.GET_CURRENT_OFFER,
+    payload: offer,
+  }),
+  changeFavorite: (offer) => ({
+    type: ActionType.CHANGE_FAVORITE,
+    payload: !offer.isFavorite,
   }),
 };

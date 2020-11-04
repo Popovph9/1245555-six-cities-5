@@ -3,11 +3,12 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
 import CitiesOfferList from "../cities-offer-list/cities-offer-list";
-import Map from "../map/map";
 import CitiesList from "../cities-list/cities-list";
 import SortingList from "../sorting-list/sorting-list";
 import OffersPlaceholder from "../offers-placeholder/offers-placeholder";
 import offersProp from "../../mocks/offers.prop";
+
+import MainMap from "../main-map/main-map";
 
 const EMPTY_PAGE_CLASSNAME = `page__main page__main--index page__main--index-empty`;
 const MAIN_PAGE_CLASSNAME = `page__main page__main--index`;
@@ -72,7 +73,7 @@ const MainPage = (props) => {
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
-                  <Map
+                  <MainMap
                     offers = {offers}
                     activePin = {activePin}
                   />

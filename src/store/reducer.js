@@ -1,14 +1,16 @@
 import {extend, sortByHighPrice, sortByLowPrice, sortByRating} from "../utils";
 import {ActionType} from "./action";
 import {offersMocks} from "../mocks/offers";
-import {DEFAULT_SORTING, HIGHT_PRICE_SORTING, LOW_PRICE_SORTING, RATING_SORTING, CITIES_NAMES} from "../const";
+import {DEFAULT_SORTING, HIGHT_PRICE_SORTING, LOW_PRICE_SORTING, RATING_SORTING, DEFAULT_CITY} from "../const";
 
 const initialState = {
-  city: CITIES_NAMES[0],
-  offers: offersMocks.filter((it) => it.city.name === offersMocks[0].city.name),
+  city: DEFAULT_CITY,
+  offers: offersMocks.filter((it) => it.city.name === DEFAULT_CITY),
   currentSorting: DEFAULT_SORTING,
   activePin: null,
-  offersMocks
+  allOffers: offersMocks,
+  favoriteOffers: offersMocks.filter((it) => it.isFavorite),
+  currentOffer: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -55,6 +57,16 @@ const reducer = (state = initialState, action) => {
     case ActionType.RESET_ACTIVE_PIN:
       return extend(state, {
         activePin: null,
+      });
+    case ActionType.GET_CURRENT_OFFER:
+      return extend(state, {
+        currentOffer: action.payload,
+      });
+    case ActionType.CHANGE_FAVORITE:
+      return extend(state, {
+        currentOffer: extend(state.currentOffer, {
+          isFavorite: action.payload,
+        })
       });
   }
 

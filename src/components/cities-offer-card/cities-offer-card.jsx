@@ -4,14 +4,12 @@ import OfferCard from "../offer-card/offer-card";
 import {CITIES_SUBCLASS} from "../../const";
 import offersProp from "../../mocks/offers.prop";
 
-const CitiesOfferCard = (props) => {
-  const {offers, onHover, onCardClick} = props;
+const CitiesOfferCard = ({offers, onCardClick}) => {
 
   return (
     <OfferCard
       className = {CITIES_SUBCLASS}
       offers = {offers}
-      onHover = {onHover}
       onCardClick = {onCardClick}
     />
   );
@@ -19,7 +17,6 @@ const CitiesOfferCard = (props) => {
 
 CitiesOfferCard.propTypes = {
   offers: offersProp,
-  onHover: PropTypes.func.isRequired,
   onCardClick: PropTypes.func.isRequired,
 };
 
