@@ -75,10 +75,10 @@ const withInactivePin = (Component) => {
       }).addTo(this.map);
 
       offers.slice(0, RENDERED_PINS).map((offer) => {
-        L.marker(offer.coords, {icon}).addTo(this.map);
+        L.marker([offer.location.latitude, offer.location.longitude], {icon}).addTo(this.map);
       });
 
-      const marker = L.marker(currentOffer.coords, markerOptions);
+      const marker = L.marker([currentOffer.location.latitude, currentOffer.location.longitude], markerOptions);
 
       marker.addTo(this.map);
     }

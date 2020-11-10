@@ -3,7 +3,7 @@ import FavoriteItem from "../favorite-item/favorite-item";
 import PropTypes from "prop-types";
 import offersProp from "../../mocks/offers.prop";
 
-const FavoriteList = ({favoriteOffers, onCardClick}) => {
+const FavoriteList = ({favoriteOffers, onCardClick, onOfferClick}) => {
   const uniqCities = Array.from(new Set(favoriteOffers.map((it) => it.city.name)));
 
   return (
@@ -23,6 +23,7 @@ const FavoriteList = ({favoriteOffers, onCardClick}) => {
               key = {i}
               offer = {offer}
               onCardClick = {onCardClick}
+              onOfferClick = {onOfferClick}
             />
           ))}
         </div>
@@ -34,6 +35,7 @@ const FavoriteList = ({favoriteOffers, onCardClick}) => {
 FavoriteList.propTypes = {
   favoriteOffers: offersProp,
   onCardClick: PropTypes.func.isRequired,
+  onOfferClick: PropTypes.func,
 };
 
 export default FavoriteList;

@@ -2,9 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import offersProp from "../../mocks/offers.prop";
 import FavoriteList from "../favorite-list/favorite-list";
+import {connect} from "react-redux";
 import NoFavoritesPlaceholder from "../no-favorites-placeholder/no-favorites-placeholder";
 
-const Favorites = ({offers, onLogoClick, onCardClick}) => {
+const Favorites = ({offers, onLogoClick, onCardClick, onOfferClick}) => {
 
   return (
     <div className="page">
@@ -45,6 +46,7 @@ const Favorites = ({offers, onLogoClick, onCardClick}) => {
                 <FavoriteList
                   favoriteOffers = {offers}
                   onCardClick = {onCardClick}
+                  onOfferClick = {onOfferClick}
                 />
               </ul>
             </section>}
@@ -64,6 +66,12 @@ Favorites.propTypes = {
   offers: offersProp,
   onLogoClick: PropTypes.func.isRequired,
   onCardClick: PropTypes.func.isRequired,
+  onOfferClick: PropTypes.func,
 };
 
-export default Favorites;
+const mapStateToProps = ({DATA}) => ({
+  offers: DATA.favoriteOffers,
+});
+
+export {Favorites};
+export default connect(mapStateToProps)(Favorites);

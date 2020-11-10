@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../store/action";
+import {changeFavorite} from "../../store/action";
 import CurrentOfferItem from "../current-offer-item/current-offer-item";
 import currentOfferProp from "../offer-screen/offer-screen.prop";
 import PlacesOfferList from "../places-offer-list/places-offer-list";
@@ -11,9 +11,7 @@ import CurrentOfferMap from "../current-offer-map/current-offer-map";
 const MAX_RENDERED_PHOTOS = 6;
 
 const OfferScreen = (props) => {
-  const {currentOffer, offers, onEmailClick, onLogoClick, onCardClick, changeFavorites} = props;
-
-  const nearOffers = offers.filter((it) => it.city.name === currentOffer.city.name);
+  const {currentOffer, reviews, nearOffers, onEmailClick, onLogoClick, onCardClick, changeFavoriteAction, onOfferClick} = props;
 
   return (
     <div className="page">
@@ -46,15 +44,16 @@ const OfferScreen = (props) => {
             <div className="property__gallery">
               {currentOffer.photos.slice(0, MAX_RENDERED_PHOTOS).map((photo, i) => (
                 <div key={`${i}`} className="property__image-wrapper">
-                  <img className="property__image" src={`/${photo}`} alt="Photo studio"/>
+                  <img className="property__image" src={photo} alt="Photo studio"/>
                 </div>
               ))}
             </div>
           </div>
           <div className="property__container container">
             <CurrentOfferItem
+              reviews = {reviews}
               currentOffer = {currentOffer}
-              changeFavorites = {changeFavorites}
+              changeFavorites = {changeFavoriteAction}
             />
           </div>
           <section className="property__map map">
@@ -70,30 +69,37 @@ const OfferScreen = (props) => {
             <PlacesOfferList
               offers = {nearOffers}
               onCardClick = {onCardClick}
+              onOfferClick = {onOfferClick}
             />
           </section>
         </div>
       </main>
     </div>
-
   );
-
 };
 
 OfferScreen.propTypes = {
   currentOffer: currentOfferProp,
   onEmailClick: PropTypes.func.isRequired,
   onLogoClick: PropTypes.func.isRequired,
-  offers: offersProp,
+  reviews: PropTypes.array,
   onCardClick: PropTypes.func.isRequired,
-  changeFavorites: PropTypes.func.isRequired,
+  changeFavoriteAction: PropTypes.func.isRequired,
+  onOfferClick: PropTypes.func,
+  nearOffers: offersProp,
 };
 
+const mapStateToProps = ({DATA, STATE}) => ({
+  currentOffer: STATE.currentOffer,
+  reviews: STATE.reviews,
+  nearOffers: DATA.nearOffers,
+});
+
 const mapDispatchToProps = (dispatch) => ({
-  changeFavorites(offer) {
-    dispatch(ActionCreator.changeFavorite(offer));
+  changeFavoriteAction(offer) {
+    dispatch(changeFavorite(offer));
   }
 });
 
 export {OfferScreen};
-export default connect(null, mapDispatchToProps)(OfferScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(OfferScreen);

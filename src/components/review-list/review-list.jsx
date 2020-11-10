@@ -1,21 +1,21 @@
 import React from "react";
+import PropTypes from "prop-types";
 import ReviewItems from "../review-items/review-items";
-import currentOfferProp from "../offer-screen/offer-screen.prop";
 
 const ReviewList = (props) => {
-  const {currentOffer} = props;
+  const {reviews} = props;
 
   return (
     <ul className="reviews__list">
       <ReviewItems
-        currentOffer = {currentOffer}
+        reviews = {reviews}
       />
     </ul>
   );
 };
 
 ReviewList.propTypes = {
-  currentOffer: currentOfferProp,
+  reviews: PropTypes.array,
 };
 
 export default ReviewList;

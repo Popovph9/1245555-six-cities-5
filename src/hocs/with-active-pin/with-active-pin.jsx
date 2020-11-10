@@ -66,7 +66,7 @@ const withActivePin = (Component) => {
       });
 
       offers.map((offer) => {
-        L.marker(offer.coords, {icon}).addTo(this.map).on(`mouseover`, (evt) => {
+        L.marker([offer.location.latitude, offer.location.longitude], {icon}).addTo(this.map).on(`mouseover`, (evt) => {
           evt.target._icon.src = PIN_ACTIVE_URL;
         }).on(`mouseout`, (evt) => {
           evt.target._icon.src = PIN_URL;

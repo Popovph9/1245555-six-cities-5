@@ -1,36 +1,42 @@
 import React from "react";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../store/action";
+import {setActivePin, resetActivePin, getCurrentOffer} from "../../store/action";
 import PropTypes from "prop-types";
 import {getRating} from "../../utils";
 import {STAR_WIDTH} from "../../const";
 import offersProp from "../../mocks/offers.prop";
+import {PLACES_SUBCLASS} from "../../const";
 
 
-const OfferCard = ({className, offers, onCardClick, setActivePin, resetActivePin, getCurrentOffer}) => {
+const OfferCard = ({className, offers, onCardClick, setActivePinAction, resetActivePinAction, getCurrentOfferAction, onOfferClick}) => {
+
+  const placesCardClass = `${className}__card place-card`;
+  const citiesCardClass = `${className}__place-card place-card`;
 
   return (
     <React.Fragment>
       {offers.map((offer, i) => (
         <article
           key={`${i}`}
-          className={`${className}__place-card place-card`}
+          className={className !== PLACES_SUBCLASS ? citiesCardClass : placesCardClass}
           onMouseEnter={() => {
-            setActivePin(offer);
+            setActivePinAction(offer);
           }}
-          onMouseLeave={resetActivePin}
+          onMouseLeave={resetActivePinAction}
           onClick={() => {
             onCardClick();
-            getCurrentOffer(offer);
+            getCurrentOfferAction(offer);
+            onOfferClick(offer.id);
           }}
         >
-          {offer.isPremium ?
+          {offer.isPremium && className !== PLACES_SUBCLASS ?
             <div className="place-card__mark">
               <span>Premium</span>
-            </div> : ``}
+            </div>
+            : null}
           <div className={`${className}__image-wrapper place-card__image-wrapper`}>
             <a href="#">
-              <img className="place-card__image" src={`/${offer.picture}`} width="260" height="200" alt="Place image"/>
+              <img className="place-card__image" src={offer.picture} width="260" height="200" alt="Place image"/>
             </a>
           </div>
           <div className="place-card__info">
@@ -69,20 +75,21 @@ OfferCard.propTypes = {
   className: PropTypes.string.isRequired,
   offers: offersProp,
   onCardClick: PropTypes.func.isRequired,
-  setActivePin: PropTypes.func.isRequired,
-  resetActivePin: PropTypes.func.isRequired,
-  getCurrentOffer: PropTypes.func.isRequired,
+  setActivePinAction: PropTypes.func.isRequired,
+  resetActivePinAction: PropTypes.func.isRequired,
+  getCurrentOfferAction: PropTypes.func.isRequired,
+  onOfferClick: PropTypes.func,
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  setActivePin(offer) {
-    dispatch(ActionCreator.setActivePin(offer));
+  setActivePinAction(offer) {
+    dispatch(setActivePin(offer));
   },
-  resetActivePin() {
-    dispatch(ActionCreator.resetActivePin());
+  resetActivePinAction() {
+    dispatch(resetActivePin());
   },
-  getCurrentOffer(offer) {
-    dispatch(ActionCreator.getCurrentOffer(offer));
+  getCurrentOfferAction(offer) {
+    dispatch(getCurrentOffer(offer));
   }
 });
 
