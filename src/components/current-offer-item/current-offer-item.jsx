@@ -9,7 +9,7 @@ import {STAR_WIDTH} from "../../const";
 const STAR_CLASSNAME = `property__avatar-wrapper user__avatar-wrapper property__avatar-wrapper--pro`;
 const CASUAL_CLASSNAME = `property__avatar-wrapper user__avatar-wrapper`;
 
-const CurrentOfferItem = ({currentOffer, changeFavorites}) => {
+const CurrentOfferItem = ({currentOffer, reviews, changeFavorites}) => {
 
   return (
     <div className="property__wrapper">
@@ -68,7 +68,7 @@ const CurrentOfferItem = ({currentOffer, changeFavorites}) => {
         <h2 className="property__host-title">Meet the host</h2>
         <div className="property__host-user user">
           <div className={currentOffer.host.isSuper ? STAR_CLASSNAME : CASUAL_CLASSNAME}>
-            <img className="property__avatar user__avatar" src={`/${currentOffer.host.avatar}`} width="74" height="74" alt="Host avatar"/>
+            <img className="property__avatar user__avatar" src={currentOffer.host.avatar} width="74" height="74" alt="Host avatar"/>
           </div>
           <span className="property__user-name">
             {currentOffer.host.name}
@@ -82,11 +82,11 @@ const CurrentOfferItem = ({currentOffer, changeFavorites}) => {
       </div>
 
       <section className="property__reviews reviews">
-        <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{currentOffer.reviews.length > 0 ? currentOffer.reviews.length : ``}</span></h2>
-        {currentOffer.reviews.length > 0 ?
+        <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length > 0 ? reviews.length : ``}</span></h2>
+        {reviews.length > 0 ?
           <ReviewList
-            currentOffer = {currentOffer}
-          /> : ``
+            reviews = {reviews}
+          /> : null
         }
         <OfferReviewForm/>
       </section>
@@ -96,6 +96,7 @@ const CurrentOfferItem = ({currentOffer, changeFavorites}) => {
 
 CurrentOfferItem.propTypes = {
   currentOffer: currentOfferProp,
+  reviews: PropTypes.array,
   changeFavorites: PropTypes.func.isRequired,
 };
 

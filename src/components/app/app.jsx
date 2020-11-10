@@ -1,15 +1,21 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {connect} from "react-redux";
+import {getOffers, getFavorites} from "../../store/action";
 import MainPage from "../main-page/main-page";
 import LoginScreen from "../login-screen/login-screen";
 import Favorites from "../favorites/favorites";
 import OfferScreen from "../offer-screen/offer-screen";
 import offersProp from "../../mocks/offers.prop";
-import PropTypes from "prop-types";
 
 const App = (props) => {
-  const {allOffers, favoriteOffers, currentOffer} = props;
+  const {currentOffer, getOffersAction, getFavoritesAction, onOfferClick} = props;
+
+
+  getOffersAction();
+  getFavoritesAction();
+
 
   return (
     <BrowserRouter>
@@ -20,6 +26,7 @@ const App = (props) => {
             <MainPage
               onEmailClick = {() => history.push(`/favorites`)}
               onCardClick = {() => history.push(`/offer`)}
+              onOfferClick = {onOfferClick}
             />
           )}>
         </Route>
@@ -30,9 +37,9 @@ const App = (props) => {
           exact path="/favorites"
           render={({history}) => (
             <Favorites
-              offers = {favoriteOffers}
               onLogoClick = {() => history.push(`/`)}
               onCardClick = {() => history.push(`/offer/:${currentOffer.id}`)}
+              onOfferClick = {onOfferClick}
             />
           )}>
         </Route>
@@ -40,11 +47,10 @@ const App = (props) => {
           exact path="/offer/:id?"
           render={({history}) => (
             <OfferScreen
-              offers = {allOffers}
-              currentOffer = {currentOffer}
               onEmailClick = {() => history.push(`/favorites`)}
               onLogoClick = {() => history.push(`/`)}
               onCardClick = {() => history.push(`/offer/:${currentOffer.id}`)}
+              onOfferClick = {onOfferClick}
             />
           )}>
         </Route>
@@ -55,15 +61,25 @@ const App = (props) => {
 
 App.propTypes = {
   allOffers: offersProp,
-  favoriteOffers: offersProp,
   currentOffer: PropTypes.object,
+  getOffersAction: PropTypes.func.isRequired,
+  getFavoritesAction: PropTypes.func.isRequired,
+  onOfferClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  allOffers: state.allOffers,
-  favoriteOffers: state.favoriteOffers,
-  currentOffer: state.currentOffer,
+const mapStateToProps = ({DATA, STATE}) => ({
+  allOffers: DATA.allOffers,
+  currentOffer: STATE.currentOffer,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getOffersAction() {
+    dispatch(getOffers());
+  },
+  getFavoritesAction() {
+    dispatch(getFavorites());
+  },
 });
 
 export {App};
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

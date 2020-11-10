@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 
 export default PropTypes.arrayOf(PropTypes.shape({
   id: PropTypes.number.isRequired,
-  coords: PropTypes.arrayOf(PropTypes.number).isRequired,
   picture: PropTypes.string.isRequired,
   photos: PropTypes.array.isRequired,
   headline: PropTypes.string.isRequired,

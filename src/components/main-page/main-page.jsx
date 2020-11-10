@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../store/action";
+import {changeCity, getOffers, changeSorting, sortOffers} from "../../store/action";
 import CitiesOfferList from "../cities-offer-list/cities-offer-list";
 import CitiesList from "../cities-list/cities-list";
 import SortingList from "../sorting-list/sorting-list";
@@ -15,7 +15,7 @@ const MAIN_PAGE_CLASSNAME = `page__main page__main--index`;
 
 
 const MainPage = (props) => {
-  const {onEmailClick, onCardClick, offers, city, changeCity, currentSorting, changeSorting, getOffers, sortOffers, activePin} = props;
+  const {onEmailClick, onCardClick, offers, city, changeCityAction, currentSorting, changeSortingAction, getOffersAction, sortOffersAction, activePin, onOfferClick} = props;
 
   return (
     <div className="page page--gray page--main">
@@ -48,8 +48,8 @@ const MainPage = (props) => {
           <section className="locations container">
             <CitiesList
               currentCity = {city}
-              getCity = {changeCity}
-              getOffers = {getOffers}
+              getCity = {changeCityAction}
+              getOffers = {getOffersAction}
             />
           </section>
         </div>
@@ -62,13 +62,14 @@ const MainPage = (props) => {
 
                 <SortingList
                   currentSorting = {currentSorting}
-                  changeSorting = {changeSorting}
-                  sortOffers = {sortOffers}
+                  changeSorting = {changeSortingAction}
+                  sortOffers = {sortOffersAction}
                 />
 
                 <CitiesOfferList
                   offers = {offers}
                   onCardClick = {onCardClick}
+                  onOfferClick = {onOfferClick}
                 />
               </section>
               <div className="cities__right-section">
@@ -90,34 +91,35 @@ MainPage.propTypes = {
   city: PropTypes.string.isRequired,
   currentSorting: PropTypes.string.isRequired,
   offers: offersProp,
-  changeCity: PropTypes.func.isRequired,
-  changeSorting: PropTypes.func.isRequired,
+  changeCityAction: PropTypes.func.isRequired,
+  changeSortingAction: PropTypes.func.isRequired,
   onEmailClick: PropTypes.func.isRequired,
   onCardClick: PropTypes.func.isRequired,
-  getOffers: PropTypes.func.isRequired,
-  sortOffers: PropTypes.func.isRequired,
-  activePin: PropTypes.array
+  getOffersAction: PropTypes.func.isRequired,
+  sortOffersAction: PropTypes.func.isRequired,
+  activePin: PropTypes.array,
+  onOfferClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  city: state.city,
-  currentSorting: state.currentSorting,
-  offers: state.offers,
-  activePin: state.activePin
+const mapStateToProps = ({DATA, STATE}) => ({
+  city: DATA.city,
+  currentSorting: STATE.currentSorting,
+  offers: DATA.offers,
+  activePin: STATE.activePin,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  changeCity(evt) {
-    dispatch(ActionCreator.changeCity(evt));
+  changeCityAction(evt) {
+    dispatch(changeCity(evt));
   },
-  getOffers() {
-    dispatch(ActionCreator.getOffers());
+  getOffersAction() {
+    dispatch(getOffers());
   },
-  changeSorting(evt) {
-    dispatch(ActionCreator.changeSorting(evt));
+  changeSortingAction(evt) {
+    dispatch(changeSorting(evt));
   },
-  sortOffers(evt) {
-    dispatch(ActionCreator.sortOffers(evt));
+  sortOffersAction(evt) {
+    dispatch(sortOffers(evt));
   },
 });
 

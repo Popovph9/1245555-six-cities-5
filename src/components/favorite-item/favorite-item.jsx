@@ -1,18 +1,19 @@
 import React from "react";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../store/action";
+import {getCurrentOffer} from "../../store/action";
 import {getRating} from "../../utils";
 import {STAR_WIDTH} from "../../const";
 import offerProp from "./favorite-item.prop";
 import PropTypes from "prop-types";
 
-const FavoriteItem = ({offer, onCardClick, getCurrentOffer}) => {
+const FavoriteItem = ({offer, onCardClick, getCurrentOfferAction, onOfferClick}) => {
 
   return (
     <article
       onClick={() => {
         onCardClick();
-        getCurrentOffer(offer);
+        getCurrentOfferAction(offer);
+        onOfferClick(offer.id);
       }}
       className="favorites__card place-card"
     >
@@ -52,12 +53,13 @@ const FavoriteItem = ({offer, onCardClick, getCurrentOffer}) => {
 FavoriteItem.propTypes = {
   offer: offerProp,
   onCardClick: PropTypes.func.isRequired,
-  getCurrentOffer: PropTypes.func.isRequired,
+  getCurrentOfferAction: PropTypes.func.isRequired,
+  onOfferClick: PropTypes.func,
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  getCurrentOffer(offer) {
-    dispatch(ActionCreator.getCurrentOffer(offer));
+  getCurrentOfferAction(offer) {
+    dispatch(getCurrentOffer(offer));
   }
 });
 
