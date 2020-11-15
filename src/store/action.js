@@ -12,6 +12,9 @@ export const ActionType = {
   GET_FAVORITES: `GET_FAVORITES`,
   LOAD_REVIEWS: `LOAD_REVIEWS`,
   LOAD_NEAR_OFFERS: `LOAD_NEAR_OFFERS`,
+  REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  CHANGE_USER: `CHANGE_USER`,
+  REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
 };
 
 
@@ -62,8 +65,9 @@ export const loadReviews = (review) => ({
   payload: review,
 });
 
-export const getFavorites = () => ({
+export const getFavorites = (offers) => ({
   type: ActionType.GET_FAVORITES,
+  payload: offers,
 });
 
 export const loadNearOffers = (offers) => ({
@@ -71,3 +75,17 @@ export const loadNearOffers = (offers) => ({
   payload: offers,
 });
 
+export const requireAuthorization = (status) => ({
+  type: ActionType.REQUIRED_AUTHORIZATION,
+  payload: status,
+});
+
+export const changeUser = (currentUser) => ({
+  type: ActionType.CHANGE_USER,
+  payload: currentUser,
+});
+
+export const redirectToRoute = (url) => ({
+  type: ActionType.REDIRECT_TO_ROUTE,
+  payload: url,
+});

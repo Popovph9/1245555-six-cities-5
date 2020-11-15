@@ -39,6 +39,10 @@ const offersState = (state = initialState, action) => {
       return extend(state, {
         reviews: action.payload,
       });
+    case ActionType.GET_FAVORITES:
+      return extend(state, {
+        favoriteOffers: action.payload,
+      });
   }
 
   return state;

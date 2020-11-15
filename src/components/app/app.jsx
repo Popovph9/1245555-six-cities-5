@@ -1,24 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {Switch, Route, Router as BrowserRouter} from "react-router-dom";
 import {connect} from "react-redux";
-import {getOffers, getFavorites} from "../../store/action";
+import {getOffers} from "../../store/action";
+import PrivateRoute from "../private-route/private-route";
 import MainPage from "../main-page/main-page";
 import LoginScreen from "../login-screen/login-screen";
 import Favorites from "../favorites/favorites";
 import OfferScreen from "../offer-screen/offer-screen";
 import offersProp from "../../mocks/offers.prop";
+import browserHistory from "../../browser-history";
 
 const App = (props) => {
-  const {currentOffer, getOffersAction, getFavoritesAction, onOfferClick} = props;
-
+  const {currentOffer, getOffersAction, onOfferClick} = props;
 
   getOffersAction();
-  getFavoritesAction();
-
 
   return (
-    <BrowserRouter>
+    <BrowserRouter history={browserHistory}>
       <Switch>
         <Route
           exact path="/"
@@ -30,19 +29,28 @@ const App = (props) => {
             />
           )}>
         </Route>
-        <Route exact path="/login">
-          <LoginScreen/>
-        </Route>
         <Route
-          exact path="/favorites"
+          exact path="/login"
           render={({history}) => (
-            <Favorites
+            <LoginScreen
               onLogoClick = {() => history.push(`/`)}
-              onCardClick = {() => history.push(`/offer/:${currentOffer.id}`)}
-              onOfferClick = {onOfferClick}
             />
-          )}>
+          )}
+        >
         </Route>
+        <PrivateRoute
+          exact
+          path={`/favorites`}
+          render={({history}) => {
+            return (
+              <Favorites
+                onLogoClick = {() => history.push(`/`)}
+                onCardClick = {() => history.push(`/offer/:${currentOffer.id}`)}
+                onOfferClick = {onOfferClick}
+              />
+            );
+          }}
+        />
         <Route
           exact path="/offer/:id?"
           render={({history}) => (
@@ -63,7 +71,6 @@ App.propTypes = {
   allOffers: offersProp,
   currentOffer: PropTypes.object,
   getOffersAction: PropTypes.func.isRequired,
-  getFavoritesAction: PropTypes.func.isRequired,
   onOfferClick: PropTypes.func.isRequired,
 };
 
@@ -75,9 +82,6 @@ const mapStateToProps = ({DATA, STATE}) => ({
 const mapDispatchToProps = (dispatch) => ({
   getOffersAction() {
     dispatch(getOffers());
-  },
-  getFavoritesAction() {
-    dispatch(getFavorites());
   },
 });
 

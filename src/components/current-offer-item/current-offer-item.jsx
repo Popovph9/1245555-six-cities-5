@@ -5,11 +5,12 @@ import OfferReviewForm from "../offer-review-form/offer-review-form";
 import ReviewList from "../review-list/review-list";
 import {getRating} from "../../utils";
 import {STAR_WIDTH} from "../../const";
+import {AuthorizationStatus} from "../../const";
 
 const STAR_CLASSNAME = `property__avatar-wrapper user__avatar-wrapper property__avatar-wrapper--pro`;
 const CASUAL_CLASSNAME = `property__avatar-wrapper user__avatar-wrapper`;
 
-const CurrentOfferItem = ({currentOffer, reviews, changeFavorites}) => {
+const CurrentOfferItem = ({currentOffer, reviews, changeFavorites, authorizationStatus}) => {
 
   return (
     <div className="property__wrapper">
@@ -88,7 +89,9 @@ const CurrentOfferItem = ({currentOffer, reviews, changeFavorites}) => {
             reviews = {reviews}
           /> : null
         }
-        <OfferReviewForm/>
+        {authorizationStatus === AuthorizationStatus.AUTH ?
+          <OfferReviewForm/>
+          : null}
       </section>
     </div>
   );
@@ -98,6 +101,7 @@ CurrentOfferItem.propTypes = {
   currentOffer: currentOfferProp,
   reviews: PropTypes.array,
   changeFavorites: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
 };
 
 export default CurrentOfferItem;

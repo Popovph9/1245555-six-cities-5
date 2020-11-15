@@ -5,7 +5,7 @@ import FavoriteList from "../favorite-list/favorite-list";
 import {connect} from "react-redux";
 import NoFavoritesPlaceholder from "../no-favorites-placeholder/no-favorites-placeholder";
 
-const Favorites = ({offers, onLogoClick, onCardClick, onOfferClick}) => {
+const Favorites = ({offers, onLogoClick, onCardClick, onOfferClick, currentUser}) => {
 
   return (
     <div className="page">
@@ -27,7 +27,7 @@ const Favorites = ({offers, onLogoClick, onCardClick, onOfferClick}) => {
                   <a className="header__nav-link header__nav-link--profile" href="#">
                     <div className="header__avatar-wrapper user__avatar-wrapper">
                     </div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
+                    <span className="header__user-name user__name">{currentUser}</span>
                   </a>
                 </li>
               </ul>
@@ -67,10 +67,12 @@ Favorites.propTypes = {
   onLogoClick: PropTypes.func.isRequired,
   onCardClick: PropTypes.func.isRequired,
   onOfferClick: PropTypes.func,
+  currentUser: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = ({DATA}) => ({
+const mapStateToProps = ({DATA, USER}) => ({
   offers: DATA.favoriteOffers,
+  currentUser: USER.currentUser,
 });
 
 export {Favorites};
