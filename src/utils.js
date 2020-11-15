@@ -1,4 +1,5 @@
 import moment from "moment";
+import {DEFAULT_SORTING, HIGHT_PRICE_SORTING, LOW_PRICE_SORTING, RATING_SORTING} from "./const";
 
 export const getRating = (rating, width) => {
   return Math.round(rating * width);
@@ -81,4 +82,29 @@ export const adaptReviewToClient = (data) => {
   delete adaptedReview.user.is_pro;
 
   return adaptedReview;
+};
+
+export const switchSorting = (state, action) => {
+  switch (action.payload) {
+    case DEFAULT_SORTING:
+      return extend(state, {
+        offers: state.allOffers.filter((it) => it.city.name === state.city)
+      });
+    case HIGHT_PRICE_SORTING:
+      return extend(state, {
+        offers: state.allOffers.filter((it) => it.city.name === state.city).sort(sortByHighPrice)
+      });
+    case LOW_PRICE_SORTING:
+      return extend(state, {
+        offers: state.allOffers.filter((it) => it.city.name === state.city).sort(sortByLowPrice)
+      });
+    case RATING_SORTING:
+      return extend(state, {
+        offers: state.allOffers.filter((it) => it.city.name === state.city).sort(sortByRating)
+      });
+    default:
+      return extend(state, {
+        offers: state.allOffers.filter((it) => it.city.name === state.city)
+      });
+  }
 };

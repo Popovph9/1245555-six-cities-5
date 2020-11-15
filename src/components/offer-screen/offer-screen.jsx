@@ -7,11 +7,22 @@ import currentOfferProp from "../offer-screen/offer-screen.prop";
 import PlacesOfferList from "../places-offer-list/places-offer-list";
 import offersProp from "../../mocks/offers.prop";
 import CurrentOfferMap from "../current-offer-map/current-offer-map";
+import UserField from "../../components/user-field/user-field";
 
 const MAX_RENDERED_PHOTOS = 6;
 
 const OfferScreen = (props) => {
-  const {currentOffer, reviews, nearOffers, onEmailClick, onLogoClick, onCardClick, changeFavoriteAction, onOfferClick} = props;
+  const {currentOffer,
+    reviews,
+    nearOffers,
+    onEmailClick,
+    onLogoClick,
+    onCardClick,
+    changeFavoriteAction,
+    onOfferClick,
+    authorizationStatus,
+    currentUser,
+  } = props;
 
   return (
     <div className="page">
@@ -26,11 +37,11 @@ const OfferScreen = (props) => {
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#" onClick={onEmailClick}>
-                    <div className="header__avatar-wrapper user__avatar-wrapper">
-                    </div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                  </a>
+                  <UserField
+                    authorizationStatus = {authorizationStatus}
+                    currentUser = {currentUser}
+                    onEmailClick = {onEmailClick}
+                  />
                 </li>
               </ul>
             </nav>
@@ -54,6 +65,7 @@ const OfferScreen = (props) => {
               reviews = {reviews}
               currentOffer = {currentOffer}
               changeFavorites = {changeFavoriteAction}
+              authorizationStatus = {authorizationStatus}
             />
           </div>
           <section className="property__map map">
@@ -87,12 +99,16 @@ OfferScreen.propTypes = {
   changeFavoriteAction: PropTypes.func.isRequired,
   onOfferClick: PropTypes.func,
   nearOffers: offersProp,
+  authorizationStatus: PropTypes.string.isRequired,
+  currentUser: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = ({DATA, STATE}) => ({
+const mapStateToProps = ({DATA, STATE, USER}) => ({
   currentOffer: STATE.currentOffer,
   reviews: STATE.reviews,
   nearOffers: DATA.nearOffers,
+  authorizationStatus: USER.authorizationStatus,
+  currentUser: USER.currentUser,
 });
 
 const mapDispatchToProps = (dispatch) => ({

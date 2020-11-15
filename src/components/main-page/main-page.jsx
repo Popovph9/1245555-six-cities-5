@@ -7,6 +7,8 @@ import CitiesList from "../cities-list/cities-list";
 import SortingList from "../sorting-list/sorting-list";
 import OffersPlaceholder from "../offers-placeholder/offers-placeholder";
 import offersProp from "../../mocks/offers.prop";
+import UserField from "../../components/user-field/user-field";
+
 
 import MainMap from "../main-map/main-map";
 
@@ -15,7 +17,20 @@ const MAIN_PAGE_CLASSNAME = `page__main page__main--index`;
 
 
 const MainPage = (props) => {
-  const {onEmailClick, onCardClick, offers, city, changeCityAction, currentSorting, changeSortingAction, getOffersAction, sortOffersAction, activePin, onOfferClick} = props;
+  const {onEmailClick,
+    onCardClick,
+    offers,
+    city,
+    changeCityAction,
+    currentSorting,
+    changeSortingAction,
+    getOffersAction,
+    sortOffersAction,
+    activePin,
+    onOfferClick,
+    authorizationStatus,
+    currentUser,
+  } = props;
 
   return (
     <div className="page page--gray page--main">
@@ -30,11 +45,11 @@ const MainPage = (props) => {
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#" onClick={onEmailClick}>
-                    <div className="header__avatar-wrapper user__avatar-wrapper">
-                    </div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                  </a>
+                  <UserField
+                    authorizationStatus = {authorizationStatus}
+                    currentUser = {currentUser}
+                    onEmailClick = {onEmailClick}
+                  />
                 </li>
               </ul>
             </nav>
@@ -99,13 +114,17 @@ MainPage.propTypes = {
   sortOffersAction: PropTypes.func.isRequired,
   activePin: PropTypes.array,
   onOfferClick: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
+  currentUser: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = ({DATA, STATE}) => ({
+const mapStateToProps = ({DATA, STATE, USER}) => ({
   city: DATA.city,
   currentSorting: STATE.currentSorting,
   offers: DATA.offers,
   activePin: STATE.activePin,
+  authorizationStatus: USER.authorizationStatus,
+  currentUser: USER.currentUser,
 });
 
 const mapDispatchToProps = (dispatch) => ({
