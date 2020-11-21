@@ -40,6 +40,12 @@ Promise.all([
           getFavorites = {() => {
             store.dispatch(fetchFavoriteOffersList());
           }}
+          refreshOfferList = {() => {
+            store.dispatch(fetchOffersList());
+          }}
+          refreshNearOffersList = {(id) => {
+            store.dispatch(fetchNearOffersList(id));
+          }}
         />
       </Provider>,
       document.querySelector(`#root`)

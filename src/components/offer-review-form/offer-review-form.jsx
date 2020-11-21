@@ -1,72 +1,69 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {sendReview} from "../../store/api-actions";
 import withReviewForm from "../../hocs/with-review-form/with-review-form";
+import StarControl from "../star-control/star-control";
+import {RATING_GRADES, RATING_TITLES, MIN_REVIEW_LENGTH, MAX_REVIEW_LENGTH} from "../../const";
 
+const OfferReviewForm = React.forwardRef((props, ref) => {
+  const {handleSubmit, handleFieldChange, handleRatingChange, isDisabled, stars} = props;
 
-const OfferReviewForm = ({handleSubmit, handleFieldChange, handleRatingChange}) => {
+  const {commentRef} = ref;
 
   return (
     <form className="reviews__form form" action="#" method="post">
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
-      <div className="reviews__rating-form form__rating">
-        <input className="form__rating-input visually-hidden" name="rating" value="5" id="5-stars" type="radio" onChange={handleRatingChange} />
-        <label htmlFor="5-stars" className="reviews__rating-label form__rating-label" title="perfect">
-          <svg className="form__star-image" width="37" height="33">
-            <use xlinkHref="#icon-star"></use>
-          </svg>
-        </label>
-
-        <input className="form__rating-input visually-hidden" name="rating" value="4" id="4-stars" type="radio" onChange={handleRatingChange} />
-        <label htmlFor="4-stars" className="reviews__rating-label form__rating-label" title="good">
-          <svg className="form__star-image" width="37" height="33">
-            <use xlinkHref="#icon-star"></use>
-          </svg>
-        </label>
-
-        <input className="form__rating-input visually-hidden" name="rating" value="3" id="3-stars" type="radio" onChange={handleRatingChange} />
-        <label htmlFor="3-stars" className="reviews__rating-label form__rating-label" title="not bad">
-          <svg className="form__star-image" width="37" height="33">
-            <use xlinkHref="#icon-star"></use>
-          </svg>
-        </label>
-
-        <input className="form__rating-input visually-hidden" name="rating" value="2" id="2-stars" type="radio" onChange={handleRatingChange} />
-        <label htmlFor="2-stars" className="reviews__rating-label form__rating-label" title="badly">
-          <svg className="form__star-image" width="37" height="33">
-            <use xlinkHref="#icon-star"></use>
-          </svg>
-        </label>
-
-        <input className="form__rating-input visually-hidden" name="rating" value="1" id="1-star" type="radio" onChange={handleRatingChange} />
-        <label htmlFor="1-star" className="reviews__rating-label form__rating-label" title="terribly">
-          <svg className="form__star-image" width="37" height="33">
-            <use xlinkHref="#icon-star"></use>
-          </svg>
-        </label>
+      <div className="reviews__rating-form form__rating" required>
+        <StarControl
+          grades = {RATING_GRADES}
+          handleRatingChange = {handleRatingChange}
+          stars = {stars}
+          titles = {RATING_TITLES}
+        />
       </div>
       <textarea className="reviews__textarea form__textarea"
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
         onChange={handleFieldChange}
-        minLength="50"
-        maxLength="300">
+        minLength={MIN_REVIEW_LENGTH}
+        maxLength={MAX_REVIEW_LENGTH}
+        ref={commentRef}
+        required
+      >
       </textarea>
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
                         To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
         </p>
-        <button className="reviews__submit form__submit button" type="submit" disabled="" onClick={handleSubmit}>Submit</button>
+        <button className="reviews__submit form__submit button" type="submit" disabled={isDisabled} onClick={handleSubmit}>Submit</button>
       </div>
     </form>
   );
 
-};
+});
+
+export {OfferReviewForm};
+
+OfferReviewForm.displayName = `OfferReviewForm`;
 
 OfferReviewForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   handleFieldChange: PropTypes.func.isRequired,
   handleRatingChange: PropTypes.func.isRequired,
+  isDisabled: PropTypes.bool.isRequired,
+  stars: PropTypes.number,
 };
 
-export default withReviewForm(OfferReviewForm);
+const mapStateToProps = ({STATE}) => ({
+  id: STATE.currentOffer.id,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  sendReview(authData) {
+    dispatch(sendReview(authData));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withReviewForm(OfferReviewForm));

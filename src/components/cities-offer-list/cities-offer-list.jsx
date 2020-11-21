@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import OfferList from "../offer-list/offer-list";
-import offersProp from "../../mocks/offers.prop";
+import offersProp from "../../store/data-props/offers.prop";
 import {CITIES_CLASS} from "../../const";
 
-const CitiesOfferList = (props) => {
-  const {offers, onCardClick, onOfferClick} = props;
+const CitiesOfferList = ({offers, onCardClick, onOfferClick, refreshOfferList}) => {
 
   return (
     <OfferList
@@ -13,14 +12,16 @@ const CitiesOfferList = (props) => {
       offers = {offers}
       onCardClick = {onCardClick}
       onOfferClick = {onOfferClick}
+      refreshOfferList = {refreshOfferList}
     />
   );
 };
 
 CitiesOfferList.propTypes = {
   offers: offersProp,
+  refreshOfferList: PropTypes.func.isRequired,
   onCardClick: PropTypes.func.isRequired,
   onOfferClick: PropTypes.func.isRequired,
 };
 
-export default CitiesOfferList;
+export default React.memo(CitiesOfferList);

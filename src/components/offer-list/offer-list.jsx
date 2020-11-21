@@ -1,13 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import offersProp from "../../mocks/offers.prop";
+import offersProp from "../../store/data-props/offers.prop";
 import CitiesOfferCard from "../cities-offer-card/cities-offer-card";
 import PlacesOfferCard from "../places-offer-card/places-offer-card";
 import OfferCard from "../offer-card/offer-card";
-import {CITIES_CLASS} from "../../const";
-import {PLACES_CLASS} from "../../const";
+import {CITIES_CLASS, PLACES_CLASS} from "../../const";
 
-const OfferList = ({offers, onCardClick, className, onOfferClick}) => {
+const OfferList = ({offers, onCardClick, className, onOfferClick, refreshOfferList, refreshNearOffersList}) => {
   switch (className) {
     case CITIES_CLASS:
       return (
@@ -16,6 +15,7 @@ const OfferList = ({offers, onCardClick, className, onOfferClick}) => {
             offers = {offers}
             onCardClick = {onCardClick}
             onOfferClick = {onOfferClick}
+            refreshOfferList = {refreshOfferList}
           />
         </div>
       );
@@ -26,6 +26,8 @@ const OfferList = ({offers, onCardClick, className, onOfferClick}) => {
             offers = {offers}
             onCardClick = {onCardClick}
             onOfferClick = {onOfferClick}
+            refreshOfferList = {refreshOfferList}
+            refreshNearOffersList = {refreshNearOffersList}
           />
         </div>
       );
@@ -36,6 +38,7 @@ const OfferList = ({offers, onCardClick, className, onOfferClick}) => {
             offers = {offers}
             onCardClick = {onCardClick}
             onOfferClick = {onOfferClick}
+            refreshOfferList = {refreshOfferList}
           />
         </div>
       );
@@ -45,9 +48,11 @@ const OfferList = ({offers, onCardClick, className, onOfferClick}) => {
 
 OfferList.propTypes = {
   offers: offersProp,
-  onCardClick: PropTypes.func.isRequired,
   className: PropTypes.string.isRequired,
+  onCardClick: PropTypes.func.isRequired,
   onOfferClick: PropTypes.func,
+  refreshOfferList: PropTypes.func,
+  refreshNearOffersList: PropTypes.func,
 };
 
-export default OfferList;
+export default React.memo(OfferList);

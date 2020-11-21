@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import reviewsProp from "../../store/data-props/reviews.prop";
 import ReviewItems from "../review-items/review-items";
 
 const ReviewList = (props) => {
@@ -15,7 +15,7 @@ const ReviewList = (props) => {
 };
 
 ReviewList.propTypes = {
-  reviews: PropTypes.array,
+  reviews: reviewsProp,
 };
 
 export default ReviewList;

@@ -1,17 +1,22 @@
 import React from "react";
-import currentOfferProp from "../offer-screen/offer-screen.prop";
 import PropTypes from "prop-types";
+import currentOfferProp from "../../store/data-props/currentOffers.prop";
+import reviewsProp from "../../store/data-props/reviews.prop";
 import OfferReviewForm from "../offer-review-form/offer-review-form";
 import ReviewList from "../review-list/review-list";
+import PropertyBookmarkButton from "../property-bookmark-button/property-bookmark-button";
 import {getRating} from "../../utils";
-import {STAR_WIDTH} from "../../const";
-import {AuthorizationStatus} from "../../const";
+import {AuthorizationStatus, STAR_WIDTH, STAR_CLASSNAME, COMMON_CLASSNAME} from "../../const";
 
-const STAR_CLASSNAME = `property__avatar-wrapper user__avatar-wrapper property__avatar-wrapper--pro`;
-const CASUAL_CLASSNAME = `property__avatar-wrapper user__avatar-wrapper`;
 
-const CurrentOfferItem = ({currentOffer, reviews, changeFavorites, authorizationStatus}) => {
-
+const CurrentOfferItem = ({
+  currentOffer,
+  reviews,
+  changeFavorites,
+  redirectToRoute,
+  authorizationStatus,
+  refreshOfferList
+}) => {
   return (
     <div className="property__wrapper">
       {currentOffer.isPremium ?
@@ -19,19 +24,16 @@ const CurrentOfferItem = ({currentOffer, reviews, changeFavorites, authorization
           <span>Premium</span>
         </div> : ``}
       <div className="property__name-wrapper">
-        <h1 className="property__name">
+        <h1 className="property__name">d
           {currentOffer.headline}
         </h1>
-        <button
-          onClick={() => {
-            changeFavorites(currentOffer);
-          }}
-          className={`${currentOffer.isFavorite ? `property__bookmark-button property__bookmark-button--active button` : `property__bookmark-button button` }`} type="button">
-          <svg className="property__bookmark-icon" width="31" height="33">
-            <use xlinkHref="#icon-bookmark"></use>
-          </svg>
-          <span className="visually-hidden">To bookmarks</span>
-        </button>
+        <PropertyBookmarkButton
+          currentOffer = {currentOffer}
+          authorizationStatus = {authorizationStatus}
+          changeFavorites = {changeFavorites}
+          refreshOfferList = {refreshOfferList}
+          redirectToRoute = {redirectToRoute}
+        />
       </div>
       <div className="property__rating rating">
         <div className="property__stars rating__stars">
@@ -68,7 +70,7 @@ const CurrentOfferItem = ({currentOffer, reviews, changeFavorites, authorization
       <div className="property__host">
         <h2 className="property__host-title">Meet the host</h2>
         <div className="property__host-user user">
-          <div className={currentOffer.host.isSuper ? STAR_CLASSNAME : CASUAL_CLASSNAME}>
+          <div className={currentOffer.host.isSuper ? STAR_CLASSNAME : COMMON_CLASSNAME}>
             <img className="property__avatar user__avatar" src={currentOffer.host.avatar} width="74" height="74" alt="Host avatar"/>
           </div>
           <span className="property__user-name">
@@ -99,9 +101,11 @@ const CurrentOfferItem = ({currentOffer, reviews, changeFavorites, authorization
 
 CurrentOfferItem.propTypes = {
   currentOffer: currentOfferProp,
-  reviews: PropTypes.array,
-  changeFavorites: PropTypes.func.isRequired,
+  reviews: reviewsProp,
   authorizationStatus: PropTypes.string.isRequired,
+  changeFavorites: PropTypes.func.isRequired,
+  redirectToRoute: PropTypes.func.isRequired,
+  refreshOfferList: PropTypes.func,
 };
 
-export default CurrentOfferItem;
+export default React.memo(CurrentOfferItem);

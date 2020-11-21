@@ -1,8 +1,9 @@
 import React from "react";
-import PropTypes from "prop-types";
-import offersProp from "../../mocks/offers.prop";
-import FavoriteList from "../favorite-list/favorite-list";
 import {connect} from "react-redux";
+import PropTypes from "prop-types";
+import offersProp from "../../store/data-props/offers.prop";
+import userProp from "../../store/data-props/currentUser.prop";
+import FavoriteList from "../favorite-list/favorite-list";
 import NoFavoritesPlaceholder from "../no-favorites-placeholder/no-favorites-placeholder";
 
 const Favorites = ({offers, onLogoClick, onCardClick, onOfferClick, currentUser}) => {
@@ -27,7 +28,7 @@ const Favorites = ({offers, onLogoClick, onCardClick, onOfferClick, currentUser}
                   <a className="header__nav-link header__nav-link--profile" href="#">
                     <div className="header__avatar-wrapper user__avatar-wrapper">
                     </div>
-                    <span className="header__user-name user__name">{currentUser}</span>
+                    <span className="header__user-name user__name">{currentUser.email}</span>
                   </a>
                 </li>
               </ul>
@@ -53,7 +54,11 @@ const Favorites = ({offers, onLogoClick, onCardClick, onOfferClick, currentUser}
         </div>
       </main>
       <footer className="footer container">
-        <a className="footer__logo-link" href="main.html">
+        <a
+          className="footer__logo-link"
+          href="#"
+          onClick={onLogoClick}
+        >
           <img className="footer__logo" src="img/logo.svg" alt="6 cities logo" width="64" height="33"/>
         </a>
       </footer>
@@ -67,7 +72,7 @@ Favorites.propTypes = {
   onLogoClick: PropTypes.func.isRequired,
   onCardClick: PropTypes.func.isRequired,
   onOfferClick: PropTypes.func,
-  currentUser: PropTypes.string.isRequired,
+  currentUser: userProp,
 };
 
 const mapStateToProps = ({DATA, USER}) => ({

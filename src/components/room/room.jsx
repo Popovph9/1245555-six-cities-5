@@ -1,27 +1,34 @@
 import React from "react";
 import PropTypes from "prop-types";
+import currentOfferProp from "../../store/data-props/currentOffers.prop";
+import offersProp from "../../store/data-props/offers.prop";
+import userProp from "../../store/data-props/currentUser.prop";
+import reviewsProp from "../../store/data-props/reviews.prop";
 import {connect} from "react-redux";
-import {changeFavorite} from "../../store/action";
+import {changeCurrentFavorite} from "../../store/api-actions";
+import {redirectToRoute} from "../../store/action";
 import CurrentOfferItem from "../current-offer-item/current-offer-item";
-import currentOfferProp from "../offer-screen/offer-screen.prop";
 import PlacesOfferList from "../places-offer-list/places-offer-list";
-import offersProp from "../../mocks/offers.prop";
 import CurrentOfferMap from "../current-offer-map/current-offer-map";
 import UserField from "../../components/user-field/user-field";
+import {MAX_RENDERED_PHOTOS} from "../../const";
 
-const MAX_RENDERED_PHOTOS = 6;
-
-const OfferScreen = (props) => {
-  const {currentOffer,
+const Room = (props) => {
+  const {
+    currentOffer,
     reviews,
     nearOffers,
     onEmailClick,
     onLogoClick,
     onCardClick,
     changeFavoriteAction,
+    redirectToRouteAction,
     onOfferClick,
     authorizationStatus,
     currentUser,
+    getFavorites,
+    refreshOfferList,
+    refreshNearOffersList,
   } = props;
 
   return (
@@ -39,8 +46,9 @@ const OfferScreen = (props) => {
                 <li className="header__nav-item user">
                   <UserField
                     authorizationStatus = {authorizationStatus}
-                    currentUser = {currentUser}
+                    currentEmail = {currentUser.email}
                     onEmailClick = {onEmailClick}
+                    getFavorites = {getFavorites}
                   />
                 </li>
               </ul>
@@ -65,7 +73,9 @@ const OfferScreen = (props) => {
               reviews = {reviews}
               currentOffer = {currentOffer}
               changeFavorites = {changeFavoriteAction}
+              redirectToRoute = {redirectToRouteAction}
               authorizationStatus = {authorizationStatus}
+              refreshOfferList = {refreshOfferList}
             />
           </div>
           <section className="property__map map">
@@ -82,6 +92,8 @@ const OfferScreen = (props) => {
               offers = {nearOffers}
               onCardClick = {onCardClick}
               onOfferClick = {onOfferClick}
+              refreshOfferList = {refreshOfferList}
+              refreshNearOffersList = {refreshNearOffersList}
             />
           </section>
         </div>
@@ -90,17 +102,21 @@ const OfferScreen = (props) => {
   );
 };
 
-OfferScreen.propTypes = {
+Room.propTypes = {
   currentOffer: currentOfferProp,
+  nearOffers: offersProp,
+  reviews: reviewsProp,
+  currentUser: userProp,
+  authorizationStatus: PropTypes.string.isRequired,
   onEmailClick: PropTypes.func.isRequired,
   onLogoClick: PropTypes.func.isRequired,
-  reviews: PropTypes.array,
   onCardClick: PropTypes.func.isRequired,
   changeFavoriteAction: PropTypes.func.isRequired,
   onOfferClick: PropTypes.func,
-  nearOffers: offersProp,
-  authorizationStatus: PropTypes.string.isRequired,
-  currentUser: PropTypes.string.isRequired,
+  redirectToRouteAction: PropTypes.func.isRequired,
+  getFavorites: PropTypes.func.isRequired,
+  refreshOfferList: PropTypes.func.isRequired,
+  refreshNearOffersList: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({DATA, STATE, USER}) => ({
@@ -112,10 +128,13 @@ const mapStateToProps = ({DATA, STATE, USER}) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  changeFavoriteAction(offer) {
-    dispatch(changeFavorite(offer));
+  changeFavoriteAction({id, status}) {
+    dispatch(changeCurrentFavorite({id, status}));
+  },
+  redirectToRouteAction(url) {
+    dispatch(redirectToRoute(url));
   }
 });
 
-export {OfferScreen};
-export default connect(mapStateToProps, mapDispatchToProps)(OfferScreen);
+export {Room};
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(Room));

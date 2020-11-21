@@ -30,7 +30,7 @@ const offersData = (state = initialState, action) => {
       return switchSorting(state, action);
     case ActionType.GET_FAVORITES:
       return extend(state, {
-        favoriteOffers: state.allOffers.filter((it) => it.isFavorite),
+        favoriteOffers: action.payload,
       });
     case ActionType.LOAD_NEAR_OFFERS:
       return extend(state, {

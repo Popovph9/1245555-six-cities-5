@@ -1,23 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
+import offersProp from "../../store/data-props/offers.prop";
+import userProp from "../../store/data-props/currentUser.prop";
 import {connect} from "react-redux";
 import {changeCity, getOffers, changeSorting, sortOffers} from "../../store/action";
+import {EMPTY_PAGE_CLASSNAME, MAIN_PAGE_CLASSNAME} from "../../const";
 import CitiesOfferList from "../cities-offer-list/cities-offer-list";
 import CitiesList from "../cities-list/cities-list";
 import SortingList from "../sorting-list/sorting-list";
 import OffersPlaceholder from "../offers-placeholder/offers-placeholder";
-import offersProp from "../../mocks/offers.prop";
-import UserField from "../../components/user-field/user-field";
-
-
+import UserField from "../user-field/user-field";
 import MainMap from "../main-map/main-map";
 
-const EMPTY_PAGE_CLASSNAME = `page__main page__main--index page__main--index-empty`;
-const MAIN_PAGE_CLASSNAME = `page__main page__main--index`;
-
-
-const MainPage = (props) => {
-  const {onEmailClick,
+const Main = (props) => {
+  const {
+    onEmailClick,
     onCardClick,
     offers,
     city,
@@ -30,6 +27,8 @@ const MainPage = (props) => {
     onOfferClick,
     authorizationStatus,
     currentUser,
+    getFavorites,
+    refreshOfferList,
   } = props;
 
   return (
@@ -47,8 +46,9 @@ const MainPage = (props) => {
                 <li className="header__nav-item user">
                   <UserField
                     authorizationStatus = {authorizationStatus}
-                    currentUser = {currentUser}
+                    currentEmail = {currentUser.email}
                     onEmailClick = {onEmailClick}
+                    getFavorites = {getFavorites}
                   />
                 </li>
               </ul>
@@ -69,8 +69,11 @@ const MainPage = (props) => {
           </section>
         </div>
         <div className="cities">
-          {offers.length === 0 ? <OffersPlaceholder city = {city}/>
-            : <div className="cities__places-container container">
+          {offers.length === 0 ?
+            <OffersPlaceholder
+              city = {city}
+            /> :
+            <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
                 <b className="places__found">{offers.length} place{offers.length === 1 ? `` : `s`} to stay in {city}</b>
@@ -85,6 +88,7 @@ const MainPage = (props) => {
                   offers = {offers}
                   onCardClick = {onCardClick}
                   onOfferClick = {onOfferClick}
+                  refreshOfferList = {refreshOfferList}
                 />
               </section>
               <div className="cities__right-section">
@@ -102,20 +106,22 @@ const MainPage = (props) => {
   );
 };
 
-MainPage.propTypes = {
+Main.propTypes = {
   city: PropTypes.string.isRequired,
   currentSorting: PropTypes.string.isRequired,
   offers: offersProp,
+  activePin: PropTypes.arrayOf(PropTypes.number),
+  authorizationStatus: PropTypes.string.isRequired,
+  currentUser: userProp,
   changeCityAction: PropTypes.func.isRequired,
   changeSortingAction: PropTypes.func.isRequired,
   onEmailClick: PropTypes.func.isRequired,
   onCardClick: PropTypes.func.isRequired,
   getOffersAction: PropTypes.func.isRequired,
   sortOffersAction: PropTypes.func.isRequired,
-  activePin: PropTypes.array,
   onOfferClick: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  currentUser: PropTypes.string.isRequired,
+  getFavorites: PropTypes.func.isRequired,
+  refreshOfferList: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({DATA, STATE, USER}) => ({
@@ -142,5 +148,5 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export {MainPage};
-export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
+export {Main};
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(Main));

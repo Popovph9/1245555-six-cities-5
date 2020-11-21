@@ -1,7 +1,7 @@
 import React from "react";
-import FavoriteItem from "../favorite-item/favorite-item";
 import PropTypes from "prop-types";
-import offersProp from "../../mocks/offers.prop";
+import offersProp from "../../store/data-props/offers.prop";
+import FavoriteItem from "../favorite-item/favorite-item";
 
 const FavoriteList = ({favoriteOffers, onCardClick, onOfferClick}) => {
   const uniqCities = Array.from(new Set(favoriteOffers.map((it) => it.city.name)));

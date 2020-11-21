@@ -3,18 +3,13 @@ import {connect} from "react-redux";
 import {getCurrentOffer} from "../../store/action";
 import {getRating} from "../../utils";
 import {STAR_WIDTH} from "../../const";
-import offerProp from "./favorite-item.prop";
+import currentOfferProp from "../../store/data-props/currentOffers.prop";
 import PropTypes from "prop-types";
 
 const FavoriteItem = ({offer, onCardClick, getCurrentOfferAction, onOfferClick}) => {
 
   return (
     <article
-      onClick={() => {
-        onCardClick();
-        getCurrentOfferAction(offer);
-        onOfferClick(offer.id);
-      }}
       className="favorites__card place-card"
     >
       <div className="favorites__image-wrapper place-card__image-wrapper">
@@ -41,7 +36,14 @@ const FavoriteItem = ({offer, onCardClick, getCurrentOfferAction, onOfferClick})
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
-        <h2 className="place-card__name">
+        <h2
+          className="place-card__name"
+          onClick={() => {
+            onCardClick();
+            getCurrentOfferAction(offer);
+            onOfferClick(offer.id);
+          }}
+        >
           <a href="#">{offer.headline}</a>
         </h2>
         <p className="place-card__type">{offer.type}</p>
@@ -51,7 +53,7 @@ const FavoriteItem = ({offer, onCardClick, getCurrentOfferAction, onOfferClick})
 };
 
 FavoriteItem.propTypes = {
-  offer: offerProp,
+  offer: currentOfferProp,
   onCardClick: PropTypes.func.isRequired,
   getCurrentOfferAction: PropTypes.func.isRequired,
   onOfferClick: PropTypes.func,
