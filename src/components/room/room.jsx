@@ -10,7 +10,7 @@ import {redirectToRoute} from "../../store/action";
 import CurrentOfferItem from "../current-offer-item/current-offer-item";
 import PlacesOfferList from "../places-offer-list/places-offer-list";
 import CurrentOfferMap from "../current-offer-map/current-offer-map";
-import UserField from "../../components/user-field/user-field";
+import UserField from "../user-field/user-field";
 import {MAX_RENDERED_PHOTOS} from "../../const";
 
 const Room = (props) => {
@@ -45,10 +45,10 @@ const Room = (props) => {
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
                   <UserField
-                    authorizationStatus = {authorizationStatus}
-                    currentEmail = {currentUser.email}
-                    onEmailClick = {onEmailClick}
-                    getFavorites = {getFavorites}
+                    authorizationStatus={authorizationStatus}
+                    currentEmail={currentUser.email}
+                    onEmailClick={onEmailClick}
+                    getFavorites={getFavorites}
                   />
                 </li>
               </ul>
@@ -70,18 +70,18 @@ const Room = (props) => {
           </div>
           <div className="property__container container">
             <CurrentOfferItem
-              reviews = {reviews}
-              currentOffer = {currentOffer}
-              changeFavorites = {changeFavoriteAction}
-              redirectToRoute = {redirectToRouteAction}
-              authorizationStatus = {authorizationStatus}
-              refreshOfferList = {refreshOfferList}
+              reviews={reviews}
+              currentOffer={currentOffer}
+              changeFavorites={changeFavoriteAction}
+              redirectToRoute={redirectToRouteAction}
+              authorizationStatus={authorizationStatus}
+              refreshOfferList={refreshOfferList}
             />
           </div>
           <section className="property__map map">
             <CurrentOfferMap
-              offers = {nearOffers}
-              currentOffer = {currentOffer}
+              offers={nearOffers}
+              currentOffer={currentOffer}
             />
           </section>
         </section>
@@ -89,11 +89,11 @@ const Room = (props) => {
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighborhood</h2>
             <PlacesOfferList
-              offers = {nearOffers}
-              onCardClick = {onCardClick}
-              onOfferClick = {onOfferClick}
-              refreshOfferList = {refreshOfferList}
-              refreshNearOffersList = {refreshNearOffersList}
+              offers={nearOffers}
+              onCardClick={onCardClick}
+              onOfferClick={onOfferClick}
+              refreshOfferList={refreshOfferList}
+              refreshNearOffersList={refreshNearOffersList}
             />
           </section>
         </div>

@@ -26,7 +26,7 @@ const withLoginForm = (Component) => {
     render() {
       return (
         <Component
-          handleSubmit = {this.handleSubmit}
+          handleSubmit={this.handleSubmit}
           ref={{
             loginRef: this.loginRef,
             passwordRef: this.passwordRef,

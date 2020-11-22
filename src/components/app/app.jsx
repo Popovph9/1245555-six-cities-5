@@ -39,10 +39,10 @@ const App = (props) => {
               onEmailClick = {() => {
                 history.push(AppRoute.FAVORITES);
               }}
-              onOfferClick = {onOfferClick}
-              onCardClick = {() => history.push(`${AppRoute.ROOM}/:${currentOffer.id}`)}
-              getFavorites = {getFavorites}
-              refreshOfferList = {refreshOfferList}
+              onOfferClick={onOfferClick}
+              onCardClick={() => history.push(`${AppRoute.ROOM}/:${currentOffer.id}`)}
+              getFavorites={getFavorites}
+              refreshOfferList={refreshOfferList}
             />
           )}>
         </Route>
@@ -50,8 +50,8 @@ const App = (props) => {
           exact path={AppRoute.SIGN_IN}
           render={({history}) => (
             <SignIn
-              onLogoClick = {() => history.push(AppRoute.MAIN)}
-              getFavorites = {getFavorites}
+              onLogoClick={() => history.push(AppRoute.MAIN)}
+              getFavorites={getFavorites}
             />
           )}
         >
@@ -62,9 +62,9 @@ const App = (props) => {
           render={({history}) => {
             return (
               <Favorites
-                onLogoClick = {() => history.push(AppRoute.MAIN)}
-                onCardClick = {() => history.push(`${AppRoute.ROOM}/:${currentOffer.id}`)}
-                onOfferClick = {onOfferClick}
+                onLogoClick={() => history.push(AppRoute.MAIN)}
+                onCardClick={() => history.push(`${AppRoute.ROOM}/:${currentOffer.id}`)}
+                onOfferClick={onOfferClick}
               />
             );
           }}
@@ -73,15 +73,15 @@ const App = (props) => {
           exact path={`${AppRoute.ROOM}/:${currentOffer.id}`}
           render={({history}) => (
             <Room
-              onEmailClick = {() => {
+              onEmailClick={() => {
                 history.push(AppRoute.FAVORITES);
               }}
-              getFavorites = {getFavorites}
-              onLogoClick = {() => history.push(AppRoute.MAIN)}
-              onCardClick = {() => history.push(`${AppRoute.ROOM}/:${currentOffer.id}`)}
-              onOfferClick = {onOfferClick}
-              refreshOfferList = {refreshOfferList}
-              refreshNearOffersList = {refreshNearOffersList}
+              getFavorites={getFavorites}
+              onLogoClick={() => history.push(AppRoute.MAIN)}
+              onCardClick={() => history.push(`${AppRoute.ROOM}/:${currentOffer.id}`)}
+              onOfferClick={onOfferClick}
+              refreshOfferList={refreshOfferList}
+              refreshNearOffersList={refreshNearOffersList}
             />
           )}>
         </Route>

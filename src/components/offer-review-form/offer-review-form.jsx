@@ -16,10 +16,10 @@ const OfferReviewForm = React.forwardRef((props, ref) => {
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating" required>
         <StarControl
-          grades = {RATING_GRADES}
-          handleRatingChange = {handleRatingChange}
-          stars = {stars}
-          titles = {RATING_TITLES}
+          grades={RATING_GRADES}
+          handleRatingChange={handleRatingChange}
+          stars={stars}
+          titles={RATING_TITLES}
         />
       </div>
       <textarea className="reviews__textarea form__textarea"

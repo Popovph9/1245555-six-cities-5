@@ -11,6 +11,9 @@ const FavoriteItem = ({offer, onCardClick, getCurrentOfferAction, onOfferClick})
   return (
     <article
       className="favorites__card place-card"
+      onMouseEnter={() => {
+        getCurrentOfferAction(offer);
+      }}
     >
       <div className="favorites__image-wrapper place-card__image-wrapper">
         <a href="#">
@@ -40,7 +43,6 @@ const FavoriteItem = ({offer, onCardClick, getCurrentOfferAction, onOfferClick})
           className="place-card__name"
           onClick={() => {
             onCardClick();
-            getCurrentOfferAction(offer);
             onOfferClick(offer.id);
           }}
         >

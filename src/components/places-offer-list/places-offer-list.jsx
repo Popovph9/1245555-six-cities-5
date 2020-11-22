@@ -8,12 +8,12 @@ const PlacesOfferList = ({offers, onCardClick, onOfferClick, refreshOfferList, r
 
   return (
     <OfferList
-      className = {PLACES_CLASS}
-      offers = {offers}
-      onCardClick = {onCardClick}
-      onOfferClick = {onOfferClick}
-      refreshOfferList = {refreshOfferList}
-      refreshNearOffersList = {refreshNearOffersList}
+      className={PLACES_CLASS}
+      offers={offers}
+      onCardClick={onCardClick}
+      onOfferClick={onOfferClick}
+      refreshOfferList={refreshOfferList}
+      refreshNearOffersList={refreshNearOffersList}
     />
   );
 };
@@ -26,4 +26,4 @@ PlacesOfferList.propTypes = {
   refreshNearOffersList: PropTypes.func,
 };
 
-export default React.memo(PlacesOfferList);
+export default PlacesOfferList;

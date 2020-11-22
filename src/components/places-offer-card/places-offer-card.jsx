@@ -8,12 +8,12 @@ const PlacesOfferCard = ({offers, onCardClick, onOfferClick, refreshOfferList, r
 
   return (
     <OfferCard
-      className = {PLACES_SUBCLASS}
-      offers = {offers}
-      onCardClick = {onCardClick}
-      onOfferClick = {onOfferClick}
-      refreshOfferList = {refreshOfferList}
-      refreshNearOffersList = {refreshNearOffersList}
+      className={PLACES_SUBCLASS}
+      offers={offers}
+      onCardClick={onCardClick}
+      onOfferClick={onOfferClick}
+      refreshOfferList={refreshOfferList}
+      refreshNearOffersList={refreshNearOffersList}
     />
   );
 };

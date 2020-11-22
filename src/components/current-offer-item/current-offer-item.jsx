@@ -24,15 +24,15 @@ const CurrentOfferItem = ({
           <span>Premium</span>
         </div> : ``}
       <div className="property__name-wrapper">
-        <h1 className="property__name">d
+        <h1 className="property__name">
           {currentOffer.headline}
         </h1>
         <PropertyBookmarkButton
-          currentOffer = {currentOffer}
-          authorizationStatus = {authorizationStatus}
-          changeFavorites = {changeFavorites}
-          refreshOfferList = {refreshOfferList}
-          redirectToRoute = {redirectToRoute}
+          currentOffer={currentOffer}
+          authorizationStatus={authorizationStatus}
+          changeFavorites={changeFavorites}
+          refreshOfferList={refreshOfferList}
+          redirectToRoute={redirectToRoute}
         />
       </div>
       <div className="property__rating rating">
@@ -71,7 +71,7 @@ const CurrentOfferItem = ({
         <h2 className="property__host-title">Meet the host</h2>
         <div className="property__host-user user">
           <div className={currentOffer.host.isSuper ? STAR_CLASSNAME : COMMON_CLASSNAME}>
-            <img className="property__avatar user__avatar" src={currentOffer.host.avatar} width="74" height="74" alt="Host avatar"/>
+            <img className="property__avatar user__avatar" src={`/${currentOffer.host.avatar}`} width="74" height="74" alt="Host avatar"/>
           </div>
           <span className="property__user-name">
             {currentOffer.host.name}
@@ -88,7 +88,7 @@ const CurrentOfferItem = ({
         <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length > 0 ? reviews.length : ``}</span></h2>
         {reviews.length > 0 ?
           <ReviewList
-            reviews = {reviews}
+            reviews={reviews}
           /> : null
         }
         {authorizationStatus === AuthorizationStatus.AUTH ?

@@ -45,10 +45,10 @@ const Main = (props) => {
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
                   <UserField
-                    authorizationStatus = {authorizationStatus}
-                    currentEmail = {currentUser.email}
-                    onEmailClick = {onEmailClick}
-                    getFavorites = {getFavorites}
+                    authorizationStatus={authorizationStatus}
+                    currentEmail={currentUser.email}
+                    onEmailClick={onEmailClick}
+                    getFavorites={getFavorites}
                   />
                 </li>
               </ul>
@@ -62,16 +62,16 @@ const Main = (props) => {
         <div className="tabs">
           <section className="locations container">
             <CitiesList
-              currentCity = {city}
-              getCity = {changeCityAction}
-              getOffers = {getOffersAction}
+              currentCity={city}
+              getCity={changeCityAction}
+              getOffers={getOffersAction}
             />
           </section>
         </div>
         <div className="cities">
           {offers.length === 0 ?
             <OffersPlaceholder
-              city = {city}
+              city={city}
             /> :
             <div className="cities__places-container container">
               <section className="cities__places places">
@@ -79,23 +79,23 @@ const Main = (props) => {
                 <b className="places__found">{offers.length} place{offers.length === 1 ? `` : `s`} to stay in {city}</b>
 
                 <SortingList
-                  currentSorting = {currentSorting}
-                  changeSorting = {changeSortingAction}
-                  sortOffers = {sortOffersAction}
+                  currentSorting={currentSorting}
+                  changeSorting={changeSortingAction}
+                  sortOffers={sortOffersAction}
                 />
 
                 <CitiesOfferList
-                  offers = {offers}
-                  onCardClick = {onCardClick}
-                  onOfferClick = {onOfferClick}
-                  refreshOfferList = {refreshOfferList}
+                  offers={offers}
+                  onCardClick={onCardClick}
+                  onOfferClick={onOfferClick}
+                  refreshOfferList={refreshOfferList}
                 />
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
                   <MainMap
-                    offers = {offers}
-                    activePin = {activePin}
+                    offers={offers}
+                    activePin={activePin}
                   />
                 </section>
               </div>

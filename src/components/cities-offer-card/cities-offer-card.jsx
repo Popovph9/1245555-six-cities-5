@@ -8,11 +8,11 @@ const CitiesOfferCard = ({offers, onCardClick, onOfferClick, refreshOfferList}) 
 
   return (
     <OfferCard
-      className = {CITIES_SUBCLASS}
-      offers = {offers}
-      onCardClick = {onCardClick}
-      onOfferClick = {onOfferClick}
-      refreshOfferList = {refreshOfferList}
+      className={CITIES_SUBCLASS}
+      offers={offers}
+      onCardClick={onCardClick}
+      onOfferClick={onOfferClick}
+      refreshOfferList={refreshOfferList}
     />
   );
 };
@@ -24,4 +24,4 @@ CitiesOfferCard.propTypes = {
   refreshOfferList: PropTypes.func,
 };
 
-export default React.memo(CitiesOfferCard);
+export default CitiesOfferCard;

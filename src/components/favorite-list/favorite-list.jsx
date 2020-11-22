@@ -20,10 +20,10 @@ const FavoriteList = ({favoriteOffers, onCardClick, onOfferClick}) => {
 
           {favoriteOffers.filter((offer) => offer.city.name === city).map((offer, i) => (
             <FavoriteItem
-              key = {i}
-              offer = {offer}
-              onCardClick = {onCardClick}
-              onOfferClick = {onOfferClick}
+              key={i}
+              offer={offer}
+              onCardClick={onCardClick}
+              onOfferClick={onOfferClick}
             />
           ))}
         </div>

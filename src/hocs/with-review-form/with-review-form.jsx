@@ -75,11 +75,11 @@ const withReviewForm = (Component) => {
     render() {
       return (
         <Component
-          handleSubmit = {this.handleSubmit}
-          handleFieldChange = {this.handleFieldChange}
-          handleRatingChange = {this.handleRatingChange}
-          isDisabled = {this.state.isDisabled}
-          stars = {this.state.grade}
+          handleSubmit={this.handleSubmit}
+          handleFieldChange={this.handleFieldChange}
+          handleRatingChange={this.handleRatingChange}
+          isDisabled={this.state.isDisabled}
+          stars={this.state.grade}
           ref={{
             commentRef: this.commentRef,
             ratingRef: this.ratingRef

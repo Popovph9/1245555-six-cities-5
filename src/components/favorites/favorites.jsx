@@ -6,7 +6,13 @@ import userProp from "../../store/data-props/currentUser.prop";
 import FavoriteList from "../favorite-list/favorite-list";
 import NoFavoritesPlaceholder from "../no-favorites-placeholder/no-favorites-placeholder";
 
-const Favorites = ({offers, onLogoClick, onCardClick, onOfferClick, currentUser}) => {
+const Favorites = ({
+  offers,
+  onLogoClick,
+  onCardClick,
+  onOfferClick,
+  currentUser,
+}) => {
 
   return (
     <div className="page">
@@ -45,12 +51,13 @@ const Favorites = ({offers, onLogoClick, onCardClick, onOfferClick, currentUser}
               <h1 className="favorites__title">Saved listing</h1>
               <ul className="favorites__list">
                 <FavoriteList
-                  favoriteOffers = {offers}
-                  onCardClick = {onCardClick}
-                  onOfferClick = {onOfferClick}
+                  favoriteOffers={offers}
+                  onCardClick={onCardClick}
+                  onOfferClick={onOfferClick}
                 />
               </ul>
-            </section>}
+            </section>
+          }
         </div>
       </main>
       <footer className="footer container">

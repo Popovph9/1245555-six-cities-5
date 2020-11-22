@@ -44,4 +44,4 @@ SortingList.propTypes = {
   sortOffers: PropTypes.func.isRequired,
 };
 
-export default React.memo(SortingList);
+export default SortingList;

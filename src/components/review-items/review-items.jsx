@@ -3,8 +3,7 @@ import reviewsProp from "../../store/data-props/reviews.prop";
 import {getReviewDate, getReviewFormatDate, sortByDate, getRating} from "../../utils";
 import {STAR_WIDTH, RENDERED_REVIEWS} from "../../const";
 
-const ReviewItems = (props) => {
-  const {reviews} = props;
+const ReviewItems = ({reviews}) => {
 
   return (
     reviews.sort(sortByDate).slice(0, RENDERED_REVIEWS).map((review, i) => (

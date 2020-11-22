@@ -12,10 +12,10 @@ const OfferList = ({offers, onCardClick, className, onOfferClick, refreshOfferLi
       return (
         <div className={`${className} places__list `}>
           <CitiesOfferCard
-            offers = {offers}
-            onCardClick = {onCardClick}
-            onOfferClick = {onOfferClick}
-            refreshOfferList = {refreshOfferList}
+            offers={offers}
+            onCardClick={onCardClick}
+            onOfferClick={onOfferClick}
+            refreshOfferList={refreshOfferList}
           />
         </div>
       );
@@ -23,11 +23,11 @@ const OfferList = ({offers, onCardClick, className, onOfferClick, refreshOfferLi
       return (
         <div className={`${className} places__list `}>
           <PlacesOfferCard
-            offers = {offers}
-            onCardClick = {onCardClick}
-            onOfferClick = {onOfferClick}
-            refreshOfferList = {refreshOfferList}
-            refreshNearOffersList = {refreshNearOffersList}
+            offers={offers}
+            onCardClick={onCardClick}
+            onOfferClick={onOfferClick}
+            refreshOfferList={refreshOfferList}
+            refreshNearOffersList={refreshNearOffersList}
           />
         </div>
       );
@@ -35,10 +35,10 @@ const OfferList = ({offers, onCardClick, className, onOfferClick, refreshOfferLi
       return (
         <div className={`${className} places__list `}>
           <OfferCard
-            offers = {offers}
-            onCardClick = {onCardClick}
-            onOfferClick = {onOfferClick}
-            refreshOfferList = {refreshOfferList}
+            offers={offers}
+            onCardClick={onCardClick}
+            onOfferClick={onOfferClick}
+            refreshOfferList={refreshOfferList}
           />
         </div>
       );

@@ -8,30 +8,22 @@ import {getRating} from "../../utils";
 import {STAR_WIDTH, PLACES_SUBCLASS} from "../../const";
 import ListBookmarkButton from "../list-bookmark-button/list-bookmark-button";
 
-const OfferCard = (
-    {className,
-      offers,
-      onCardClick,
-      setActivePinAction,
-      resetActivePinAction,
-      getCurrentOfferAction,
-      onOfferClick,
-      authorizationStatus,
-      changeFavoriteAction,
-      refreshOfferList,
-      redirectToRouteAction,
-      currentOfferId,
-      refreshNearOffersList,
-    }
-) => {
+const OfferCard = ({className,
+  offers,
+  onCardClick,
+  setActivePinAction,
+  resetActivePinAction,
+  getCurrentOfferAction,
+  onOfferClick,
+  authorizationStatus,
+  changeFavoriteAction,
+  refreshOfferList,
+  redirectToRouteAction,
+  currentOfferId,
+  refreshNearOffersList,
+}) => {
   const placesCardClass = `${className}__card place-card`;
   const citiesCardClass = `${className}__place-card place-card`;
-
-  const onClick = (offer) => {
-    getCurrentOfferAction(offer);
-    onOfferClick(offer.id);
-    onCardClick();
-  };
 
   return (
     <React.Fragment>
@@ -50,7 +42,12 @@ const OfferCard = (
             </div>
             : null}
           <div className={`${className}__image-wrapper place-card__image-wrapper`}>
-            <a>
+            <a
+              href="#"
+              onClick={(evt) => {
+                evt.preventDefault();
+              }}
+            >
               <img className="place-card__image" src={offer.picture} width="260" height="200" alt="Place image"/>
             </a>
           </div>
@@ -61,14 +58,14 @@ const OfferCard = (
                 <span className="place-card__price-text">&#47;&nbsp;night</span>
               </div>
               <ListBookmarkButton
-                className = {className}
-                offer = {offer}
-                authorizationStatus = {authorizationStatus}
-                changeFavoriteAction = {changeFavoriteAction}
-                refreshOfferList = {refreshOfferList}
-                redirectToRoute = {redirectToRouteAction}
-                currentOfferId = {currentOfferId}
-                refreshNearOffersList = {refreshNearOffersList}
+                className={className}
+                offer={offer}
+                authorizationStatus={authorizationStatus}
+                changeFavoriteAction={changeFavoriteAction}
+                refreshOfferList={refreshOfferList}
+                redirectToRoute={redirectToRouteAction}
+                currentOfferId={currentOfferId}
+                refreshNearOffersList={refreshNearOffersList}
               />
             </div>
             <div className="place-card__rating rating">
@@ -79,8 +76,12 @@ const OfferCard = (
             </div>
             <h2
               className="place-card__name"
-              onClick={() => {
-                onClick(offer);
+              onMouseDown={() => {
+                getCurrentOfferAction(offer);
+              }}
+              onMouseUp={() => {
+                onOfferClick(offer.id);
+                onCardClick();
               }}
             >
               <a href="#">{offer.headline}</a>
@@ -134,4 +135,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export {OfferCard};
-export default connect(mapStateToProps, mapDispatchToProps)(React.memo(OfferCard));
+export default connect(mapStateToProps, mapDispatchToProps)(OfferCard);
