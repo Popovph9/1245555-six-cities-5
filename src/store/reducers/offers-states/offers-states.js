@@ -30,11 +30,7 @@ const offersState = (state = initialState, action) => {
         currentOffer: action.payload,
       });
     case ActionType.CHANGE_FAVORITE:
-      return extend(state, {
-        currentOffer: extend(state.currentOffer, {
-          isFavorite: action.payload,
-        })
-      });
+      return (Number(action.payload));
     case ActionType.LOAD_REVIEWS:
       return extend(state, {
         reviews: action.payload,
@@ -42,6 +38,10 @@ const offersState = (state = initialState, action) => {
     case ActionType.GET_FAVORITES:
       return extend(state, {
         favoriteOffers: action.payload,
+      });
+    case ActionType.CLEAR_REVIEW_LIST:
+      return extend(state, {
+        reviews: action.payload,
       });
   }
 

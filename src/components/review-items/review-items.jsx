@@ -1,15 +1,12 @@
 import React from "react";
-import PropTypes from "prop-types";
-import {getReviewDate, getReviewFormatDate} from "../../utils";
-import {getRating} from "../../utils";
+import reviewsProp from "../../store/data-props/reviews.prop";
+import {getReviewDate, getReviewFormatDate, sortByDate, getRating} from "../../utils";
 import {STAR_WIDTH, RENDERED_REVIEWS} from "../../const";
 
-
-const ReviewItems = (props) => {
-  const {reviews} = props;
+const ReviewItems = ({reviews}) => {
 
   return (
-    reviews.slice(0, RENDERED_REVIEWS).map((review, i) => (
+    reviews.sort(sortByDate).slice(0, RENDERED_REVIEWS).map((review, i) => (
       <li key={`reviews__item-${i}`} className="reviews__item">
         <div className="reviews__user user">
           <div className="reviews__avatar-wrapper user__avatar-wrapper">
@@ -37,7 +34,7 @@ const ReviewItems = (props) => {
 };
 
 ReviewItems.propTypes = {
-  reviews: PropTypes.array,
+  reviews: reviewsProp,
 };
 
 export default ReviewItems;

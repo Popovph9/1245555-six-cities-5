@@ -33,12 +33,18 @@ Promise.all([
   ReactDOM.render(
       <Provider store={store}>
         <App
-          onOfferClick = {(id) => {
+          onOfferClick={(id) => {
             store.dispatch(fetchReviewsList(id));
             store.dispatch(fetchNearOffersList(id));
           }}
-          getFavorites = {() => {
+          getFavorites={() => {
             store.dispatch(fetchFavoriteOffersList());
+          }}
+          refreshOfferList={() => {
+            store.dispatch(fetchOffersList());
+          }}
+          refreshNearOffersList={(id) => {
+            store.dispatch(fetchNearOffersList(id));
           }}
         />
       </Provider>,

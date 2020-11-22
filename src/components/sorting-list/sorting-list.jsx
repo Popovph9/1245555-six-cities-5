@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-const OPEN_CLASSNAME = `places__options--opened`;
+import {OPEN_CLASSNAME} from "../../const";
 
 const SortingList = (props) => {
   const {currentSorting, changeSorting, sortOffers} = props;

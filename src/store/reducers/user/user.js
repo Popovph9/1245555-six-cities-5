@@ -4,7 +4,7 @@ import {extend} from "../../../utils";
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
-  currentUser: ``,
+  currentUser: {},
 };
 
 const user = (state = initialState, action) => {

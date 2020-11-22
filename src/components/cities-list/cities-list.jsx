@@ -1,9 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {CITIES_NAMES} from "../../const";
+import {ACTIVE_CLASSNAME, CASUAL_CLASSNAME} from "../../const";
 
-const ACTIVE_CLASSNAME = `locations__item-link tabs__item tabs__item--active`;
-const CASUAL_CLASSNAME = `locations__item-link tabs__item`;
 
 const CitiesList = (props) => {
   const {currentCity, getCity, getOffers} = props;
@@ -27,4 +26,4 @@ CitiesList.propTypes = {
   getOffers: PropTypes.func.isRequired,
 };
 
-export default CitiesList;
+export default React.memo(CitiesList);

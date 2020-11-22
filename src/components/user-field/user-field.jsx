@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {AuthorizationStatus} from "../../const";
 
-const UserField = ({authorizationStatus, currentUser, onEmailClick}) => {
+const UserField = ({authorizationStatus, currentEmail, onEmailClick, getFavorites}) => {
 
   return (
     <a className="header__nav-link header__nav-link--profile" href="#">
@@ -10,15 +10,19 @@ const UserField = ({authorizationStatus, currentUser, onEmailClick}) => {
       </div>
       {authorizationStatus === AuthorizationStatus.NO_AUTH ?
         <span className="header__login" onClick={onEmailClick}>Sign in</span> :
-        <span className="header__user-name user__name" onClick={onEmailClick}>{currentUser}</span>}
+        <span className="header__user-name user__name" onClick={() => {
+          onEmailClick();
+          getFavorites();
+        }}>{currentEmail}</span>}
     </a>
   );
 };
 
 UserField.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
-  currentUser: PropTypes.string.isRequired,
+  currentEmail: PropTypes.string,
   onEmailClick: PropTypes.func,
+  getFavorites: PropTypes.func,
 };
 
-export default UserField;
+export default React.memo(UserField);

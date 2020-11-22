@@ -1,5 +1,5 @@
 import moment from "moment";
-import {DEFAULT_SORTING, HIGHT_PRICE_SORTING, LOW_PRICE_SORTING, RATING_SORTING} from "./const";
+import {DEFAULT_SORTING, HIGHT_PRICE_SORTING, LOW_PRICE_SORTING, RATING_SORTING, AuthorizationStatus} from "./const";
 
 export const getRating = (rating, width) => {
   return Math.round(rating * width);
@@ -27,6 +27,10 @@ export const sortByLowPrice = (offerA, offerB) => {
 
 export const sortByRating = (offerA, offerB) => {
   return offerB.rating - offerA.rating;
+};
+
+export const sortByDate = (reviewA, reviewB) => {
+  return moment(reviewB.date) - moment(reviewA.date);
 };
 
 export const adaptOfferToClient = (data) => {
@@ -59,8 +63,25 @@ export const adaptOfferToClient = (data) => {
   delete adaptedOffer.max_adults;
   delete adaptedOffer.host.avatar_url;
   delete adaptedOffer.host.is_pro;
+  delete adaptedOffer.goods;
 
   return adaptedOffer;
+};
+
+export const adaptUserInfoToClient = (data) => {
+  const adaptedInfo = Object.assign(
+      {},
+      data,
+      {
+        authorAvatar: data.avatar_url,
+        isSuper: data.is_pro,
+      }
+  );
+
+  delete adaptedInfo.avatar_url;
+  delete adaptedInfo.is_pro;
+
+  return adaptedInfo;
 };
 
 export const adaptReviewToClient = (data) => {
@@ -106,5 +127,32 @@ export const switchSorting = (state, action) => {
       return extend(state, {
         offers: state.allOffers.filter((it) => it.city.name === state.city)
       });
+  }
+};
+
+
+export const getAction = (authorizationStatus, redirectToRoute, changeFavoriteAction, offer) => {
+  switch (authorizationStatus) {
+    case AuthorizationStatus.NO_AUTH:
+      return (
+        () => {
+          redirectToRoute(`/login`);
+        }
+      );
+    case AuthorizationStatus.AUTH:
+      return (
+        () => {
+          changeFavoriteAction({
+            id: offer.id,
+            status: Number(!offer.isFavorite)
+          });
+        }
+      );
+    default:
+      return (
+        () => {
+          redirectToRoute(`/login`);
+        }
+      );
   }
 };

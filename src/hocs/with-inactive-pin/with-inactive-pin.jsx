@@ -1,8 +1,8 @@
 import React, {PureComponent} from "react";
-import currentOfferProp from "../../components/offer-screen/offer-screen.prop";
-import offersProp from "../../mocks/offers.prop";
 import L from "leaflet";
 import 'leaflet/dist/leaflet.css';
+import currentOfferProp from "../../store/data-props/currentOffers.prop";
+import offersProp from "../../store/data-props/offers.prop";
 import {PIN_URL, PIN_ACTIVE_URL, PIN_SIZES, RENDERED_PINS} from "../../const";
 
 const withInactivePin = (Component) => {

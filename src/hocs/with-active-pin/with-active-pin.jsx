@@ -1,8 +1,8 @@
 import React, {PureComponent} from "react";
-import PropTypes from "prop-types";
-import offersProp from "../../mocks/offers.prop";
 import L from "leaflet";
 import 'leaflet/dist/leaflet.css';
+import PropTypes from "prop-types";
+import offersProp from "../../store/data-props/offers.prop";
 import {PIN_URL, PIN_ACTIVE_URL, PIN_SIZES} from "../../const";
 
 const withActivePin = (Component) => {
@@ -101,7 +101,7 @@ const withActivePin = (Component) => {
 
   WithActivePin.propTypes = {
     offers: offersProp,
-    activePin: PropTypes.array
+    activePin: PropTypes.arrayOf(PropTypes.number)
   };
 
   return WithActivePin;
