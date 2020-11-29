@@ -4,14 +4,13 @@ import offersProp from "../../store/data-props/offers.prop";
 import OfferCard from "../offer-card/offer-card";
 import {CITIES_SUBCLASS} from "../../const";
 
-const CitiesOfferCard = ({offers, onCardClick, onOfferClick, refreshOfferList}) => {
+const CitiesOfferCard = ({offers, onCardClick, refreshOfferList}) => {
 
   return (
     <OfferCard
       className={CITIES_SUBCLASS}
       offers={offers}
       onCardClick={onCardClick}
-      onOfferClick={onOfferClick}
       refreshOfferList={refreshOfferList}
     />
   );
@@ -20,7 +19,6 @@ const CitiesOfferCard = ({offers, onCardClick, onOfferClick, refreshOfferList}) 
 CitiesOfferCard.propTypes = {
   offers: offersProp,
   onCardClick: PropTypes.func.isRequired,
-  onOfferClick: PropTypes.func.isRequired,
   refreshOfferList: PropTypes.func,
 };
 

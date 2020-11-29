@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import offersProp from "../../store/data-props/offers.prop";
 import FavoriteItem from "../favorite-item/favorite-item";
 
-const FavoriteList = ({favoriteOffers, onCardClick, onOfferClick}) => {
+const FavoriteList = ({favoriteOffers, onCardClick}) => {
   const uniqCities = Array.from(new Set(favoriteOffers.map((it) => it.city.name)));
 
   return (
@@ -23,7 +23,6 @@ const FavoriteList = ({favoriteOffers, onCardClick, onOfferClick}) => {
               key={i}
               offer={offer}
               onCardClick={onCardClick}
-              onOfferClick={onOfferClick}
             />
           ))}
         </div>
@@ -35,7 +34,6 @@ const FavoriteList = ({favoriteOffers, onCardClick, onOfferClick}) => {
 FavoriteList.propTypes = {
   favoriteOffers: offersProp,
   onCardClick: PropTypes.func.isRequired,
-  onOfferClick: PropTypes.func,
 };
 
 export default FavoriteList;

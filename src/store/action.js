@@ -16,8 +16,8 @@ export const ActionType = {
   CHANGE_USER: `CHANGE_USER`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
   CLEAR_REVIEW_LIST: `CLEAR_REVIEW_LIST`,
+  LOAD_CURRENT_OFFER: `LOAD_CURRENT_OFFER`,
 };
-
 
 export const changeCity = (evt) => ({
   type: ActionType.CHANGE_CITY,
@@ -32,6 +32,7 @@ export const changeSorting = (evt) => ({
   type: ActionType.CHANGE_SORTING,
   payload: evt.target.textContent,
 });
+
 export const sortOffers = (evt) => ({
   type: ActionType.SORT_OFFERS,
   payload: evt.target.textContent,
@@ -51,9 +52,9 @@ export const getCurrentOffer = (offer) => ({
   payload: offer,
 });
 
-export const changeFavorite = (offer) => ({
-  type: ActionType.CHANGE_FAVORITE,
-  payload: !offer.isFavorite,
+export const loadCurrentOffer = (offer) => ({
+  type: ActionType.LOAD_CURRENT_OFFER,
+  payload: offer,
 });
 
 export const loadOffers = (offers) => ({
@@ -89,8 +90,4 @@ export const changeUser = (currentUser) => ({
 export const redirectToRoute = (url) => ({
   type: ActionType.REDIRECT_TO_ROUTE,
   payload: url,
-});
-
-export const clearReviewList = () => ({
-  type: ActionType.CLEAR_REVIEW_LIST,
 });

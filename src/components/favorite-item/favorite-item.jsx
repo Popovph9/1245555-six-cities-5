@@ -6,7 +6,7 @@ import {STAR_WIDTH} from "../../const";
 import currentOfferProp from "../../store/data-props/currentOffers.prop";
 import PropTypes from "prop-types";
 
-const FavoriteItem = ({offer, onCardClick, getCurrentOfferAction, onOfferClick}) => {
+const FavoriteItem = ({offer, onCardClick, getCurrentOfferAction}) => {
 
   return (
     <article
@@ -43,7 +43,6 @@ const FavoriteItem = ({offer, onCardClick, getCurrentOfferAction, onOfferClick})
           className="place-card__name"
           onClick={() => {
             onCardClick();
-            onOfferClick(offer.id);
           }}
         >
           <a href="#">{offer.headline}</a>
@@ -58,7 +57,6 @@ FavoriteItem.propTypes = {
   offer: currentOfferProp,
   onCardClick: PropTypes.func.isRequired,
   getCurrentOfferAction: PropTypes.func.isRequired,
-  onOfferClick: PropTypes.func,
 };
 
 const mapDispatchToProps = (dispatch) => ({

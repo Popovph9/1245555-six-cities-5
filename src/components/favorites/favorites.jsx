@@ -10,7 +10,6 @@ const Favorites = ({
   offers,
   onLogoClick,
   onCardClick,
-  onOfferClick,
   currentUser,
 }) => {
 
@@ -53,7 +52,6 @@ const Favorites = ({
                 <FavoriteList
                   favoriteOffers={offers}
                   onCardClick={onCardClick}
-                  onOfferClick={onOfferClick}
                 />
               </ul>
             </section>
@@ -76,9 +74,8 @@ const Favorites = ({
 
 Favorites.propTypes = {
   offers: offersProp,
-  onLogoClick: PropTypes.func.isRequired,
-  onCardClick: PropTypes.func.isRequired,
-  onOfferClick: PropTypes.func,
+  onLogoClick: PropTypes.func,
+  onCardClick: PropTypes.func,
   currentUser: userProp,
 };
 

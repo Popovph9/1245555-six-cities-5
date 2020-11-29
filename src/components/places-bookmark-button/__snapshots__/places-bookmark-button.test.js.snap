@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should PlacesBookmarkButton render correctly Should PlacesBookmarkButton render correctly with favorite offer and authorized user 1`] = `
+<button
+  className="place-card__bookmark-button--active button"
+  onClick={[Function]}
+  type="button"
+>
+  <svg
+    className="place-card__bookmark-icon"
+    height="19"
+    width="18"
+  >
+    <use
+      xlinkHref="#icon-bookmark"
+    />
+  </svg>
+  <span
+    className="visually-hidden"
+  >
+    To bookmarks
+  </span>
+</button>
+`;
+
+exports[`Should PlacesBookmarkButton render correctly Should PlacesBookmarkButton render correctly with no favorite offers and unauthorized user 1`] = `
+<button
+  className="place-card__bookmark-button button"
+  onClick={[Function]}
+  type="button"
+>
+  <svg
+    className="place-card__bookmark-icon"
+    height="19"
+    width="18"
+  >
+    <use
+      xlinkHref="#icon-bookmark"
+    />
+  </svg>
+  <span
+    className="visually-hidden"
+  >
+    To bookmarks
+  </span>
+</button>
+`;

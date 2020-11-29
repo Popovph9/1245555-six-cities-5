@@ -5,8 +5,10 @@ const MainMap = () => {
   return (
     <div
       id="map"
-    />
+    ></div>
   );
 };
+
+export {MainMap};
 
 export default withActivePin(React.memo(MainMap));

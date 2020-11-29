@@ -24,7 +24,6 @@ const Main = (props) => {
     getOffersAction,
     sortOffersAction,
     activePin,
-    onOfferClick,
     authorizationStatus,
     currentUser,
     getFavorites,
@@ -87,7 +86,6 @@ const Main = (props) => {
                 <CitiesOfferList
                   offers={offers}
                   onCardClick={onCardClick}
-                  onOfferClick={onOfferClick}
                   refreshOfferList={refreshOfferList}
                 />
               </section>
@@ -108,7 +106,7 @@ const Main = (props) => {
 
 Main.propTypes = {
   city: PropTypes.string.isRequired,
-  currentSorting: PropTypes.string.isRequired,
+  currentSorting: PropTypes.string,
   offers: offersProp,
   activePin: PropTypes.arrayOf(PropTypes.number),
   authorizationStatus: PropTypes.string.isRequired,
@@ -119,7 +117,6 @@ Main.propTypes = {
   onCardClick: PropTypes.func.isRequired,
   getOffersAction: PropTypes.func.isRequired,
   sortOffersAction: PropTypes.func.isRequired,
-  onOfferClick: PropTypes.func.isRequired,
   getFavorites: PropTypes.func.isRequired,
   refreshOfferList: PropTypes.func.isRequired,
 };
@@ -149,4 +146,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export {Main};
-export default connect(mapStateToProps, mapDispatchToProps)(React.memo(Main));
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

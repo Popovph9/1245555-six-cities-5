@@ -4,9 +4,7 @@ import {CITIES_NAMES} from "../../const";
 import {ACTIVE_CLASSNAME, CASUAL_CLASSNAME} from "../../const";
 
 
-const CitiesList = (props) => {
-  const {currentCity, getCity, getOffers} = props;
-
+const CitiesList = ({currentCity, getCity, getOffers}) => {
   return (
     <ul className="locations__list tabs__list">
       {CITIES_NAMES.map((it, i) => (

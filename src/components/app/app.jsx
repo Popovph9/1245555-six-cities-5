@@ -16,15 +16,16 @@ import Favorites from "../favorites/favorites";
 import Room from "../room/room";
 
 import {AppRoute} from "../../const";
+import {getValue} from "../../utils";
 
 const App = (props) => {
   const {
     currentOffer,
     getOffersAction,
-    onOfferClick,
+    loadOfferData,
     getFavorites,
     refreshOfferList,
-    refreshNearOffersList
+    refreshNearOffersList,
   } = props;
 
   getOffersAction();
@@ -39,8 +40,7 @@ const App = (props) => {
               onEmailClick = {() => {
                 history.push(AppRoute.FAVORITES);
               }}
-              onOfferClick={onOfferClick}
-              onCardClick={() => history.push(`${AppRoute.ROOM}/:${currentOffer.id}`)}
+              onCardClick={() => history.push(`${AppRoute.ROOM}/:${currentOffer.id}?`)}
               getFavorites={getFavorites}
               refreshOfferList={refreshOfferList}
             />
@@ -63,23 +63,23 @@ const App = (props) => {
             return (
               <Favorites
                 onLogoClick={() => history.push(AppRoute.MAIN)}
-                onCardClick={() => history.push(`${AppRoute.ROOM}/:${currentOffer.id}`)}
-                onOfferClick={onOfferClick}
+                onCardClick={() => history.push(`${AppRoute.ROOM}/:${currentOffer.id}?`)}
               />
             );
           }}
         />
         <Route
-          exact path={`${AppRoute.ROOM}/:${currentOffer.id}`}
-          render={({history}) => (
+          exact path={`${AppRoute.ROOM}/:${currentOffer.id}?`}
+          render={({history, match}) => (
             <Room
+              id={getValue(match.params)}
               onEmailClick={() => {
                 history.push(AppRoute.FAVORITES);
               }}
               getFavorites={getFavorites}
               onLogoClick={() => history.push(AppRoute.MAIN)}
-              onCardClick={() => history.push(`${AppRoute.ROOM}/:${currentOffer.id}`)}
-              onOfferClick={onOfferClick}
+              onCardClick={() => history.push(`${AppRoute.ROOM}/:${currentOffer.id}?`)}
+              loadOfferData={loadOfferData}
               refreshOfferList={refreshOfferList}
               refreshNearOffersList={refreshNearOffersList}
             />
@@ -94,7 +94,7 @@ App.propTypes = {
   allOffers: offersProp,
   currentOffer: currentOfferProp,
   getOffersAction: PropTypes.func.isRequired,
-  onOfferClick: PropTypes.func.isRequired,
+  loadOfferData: PropTypes.func.isRequired,
   getFavorites: PropTypes.func.isRequired,
   refreshOfferList: PropTypes.func.isRequired,
   refreshNearOffersList: PropTypes.func.isRequired,
@@ -108,7 +108,7 @@ const mapStateToProps = ({DATA, STATE}) => ({
 const mapDispatchToProps = (dispatch) => ({
   getOffersAction() {
     dispatch(getOffers());
-  },
+  }
 });
 
 export {App};

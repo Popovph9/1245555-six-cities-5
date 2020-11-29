@@ -1,0 +1,1254 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should OfferReviewForm render correctly Should Favorites store render correctly when submit button is disabled 1`] = `
+<form
+  action="#"
+  className="reviews__form form"
+  method="post"
+>
+  <label
+    className="reviews__label form__label"
+    htmlFor="review"
+  >
+    Your review
+  </label>
+  <div
+    className="reviews__rating-form form__rating"
+    required={true}
+  >
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="5-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="5"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="5-stars"
+      title="perfect"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="4-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="4"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="4-stars"
+      title="good"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="3-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="3"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="3-stars"
+      title="not bad"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="2-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="2"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="2-stars"
+      title="badly"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="1-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="1"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="1-stars"
+      title="terribly"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+  </div>
+  <textarea
+    className="reviews__textarea form__textarea"
+    id="review"
+    maxLength="300"
+    minLength="50"
+    name="review"
+    onChange={[Function]}
+    placeholder="Tell how was your stay, what you like and what can be improved"
+    required={true}
+  />
+  <div
+    className="reviews__button-wrapper"
+  >
+    <p
+      className="reviews__help"
+    >
+      To submit review please make sure to set 
+      <span
+        className="reviews__star"
+      >
+        rating
+      </span>
+       and describe your stay with at least 
+      <b
+        className="reviews__text-amount"
+      >
+        50 characters
+      </b>
+      .
+    </p>
+    <button
+      className="reviews__submit form__submit button"
+      disabled={true}
+      onClick={[Function]}
+      type="submit"
+    >
+      Submit
+    </button>
+  </div>
+</form>
+`;
+
+exports[`Should OfferReviewForm render correctly Should Favorites store render correctly when submit button is not disabled 1`] = `
+<form
+  action="#"
+  className="reviews__form form"
+  method="post"
+>
+  <label
+    className="reviews__label form__label"
+    htmlFor="review"
+  >
+    Your review
+  </label>
+  <div
+    className="reviews__rating-form form__rating"
+    required={true}
+  >
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="5-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="5"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="5-stars"
+      title="perfect"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="4-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="4"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="4-stars"
+      title="good"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="3-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="3"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="3-stars"
+      title="not bad"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="2-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="2"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="2-stars"
+      title="badly"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="1-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="1"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="1-stars"
+      title="terribly"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+  </div>
+  <textarea
+    className="reviews__textarea form__textarea"
+    id="review"
+    maxLength="300"
+    minLength="50"
+    name="review"
+    onChange={[Function]}
+    placeholder="Tell how was your stay, what you like and what can be improved"
+    required={true}
+  />
+  <div
+    className="reviews__button-wrapper"
+  >
+    <p
+      className="reviews__help"
+    >
+      To submit review please make sure to set 
+      <span
+        className="reviews__star"
+      >
+        rating
+      </span>
+       and describe your stay with at least 
+      <b
+        className="reviews__text-amount"
+      >
+        50 characters
+      </b>
+      .
+    </p>
+    <button
+      className="reviews__submit form__submit button"
+      disabled={false}
+      onClick={[Function]}
+      type="submit"
+    >
+      Submit
+    </button>
+  </div>
+</form>
+`;
+
+exports[`Should OfferReviewForm render correctly Should Favorites store render correctly with 1 star 1`] = `
+<form
+  action="#"
+  className="reviews__form form"
+  method="post"
+>
+  <label
+    className="reviews__label form__label"
+    htmlFor="review"
+  >
+    Your review
+  </label>
+  <div
+    className="reviews__rating-form form__rating"
+    required={true}
+  >
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="5-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="5"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="5-stars"
+      title="perfect"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="4-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="4"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="4-stars"
+      title="good"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="3-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="3"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="3-stars"
+      title="not bad"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="2-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="2"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="2-stars"
+      title="badly"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={true}
+      className="form__rating-input visually-hidden"
+      id="1-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="1"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="1-stars"
+      title="terribly"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+  </div>
+  <textarea
+    className="reviews__textarea form__textarea"
+    id="review"
+    maxLength="300"
+    minLength="50"
+    name="review"
+    onChange={[Function]}
+    placeholder="Tell how was your stay, what you like and what can be improved"
+    required={true}
+  />
+  <div
+    className="reviews__button-wrapper"
+  >
+    <p
+      className="reviews__help"
+    >
+      To submit review please make sure to set 
+      <span
+        className="reviews__star"
+      >
+        rating
+      </span>
+       and describe your stay with at least 
+      <b
+        className="reviews__text-amount"
+      >
+        50 characters
+      </b>
+      .
+    </p>
+    <button
+      className="reviews__submit form__submit button"
+      disabled={false}
+      onClick={[Function]}
+      type="submit"
+    >
+      Submit
+    </button>
+  </div>
+</form>
+`;
+
+exports[`Should OfferReviewForm render correctly Should Favorites store render correctly with 2 stars 1`] = `
+<form
+  action="#"
+  className="reviews__form form"
+  method="post"
+>
+  <label
+    className="reviews__label form__label"
+    htmlFor="review"
+  >
+    Your review
+  </label>
+  <div
+    className="reviews__rating-form form__rating"
+    required={true}
+  >
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="5-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="5"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="5-stars"
+      title="perfect"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="4-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="4"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="4-stars"
+      title="good"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="3-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="3"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="3-stars"
+      title="not bad"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={true}
+      className="form__rating-input visually-hidden"
+      id="2-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="2"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="2-stars"
+      title="badly"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="1-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="1"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="1-stars"
+      title="terribly"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+  </div>
+  <textarea
+    className="reviews__textarea form__textarea"
+    id="review"
+    maxLength="300"
+    minLength="50"
+    name="review"
+    onChange={[Function]}
+    placeholder="Tell how was your stay, what you like and what can be improved"
+    required={true}
+  />
+  <div
+    className="reviews__button-wrapper"
+  >
+    <p
+      className="reviews__help"
+    >
+      To submit review please make sure to set 
+      <span
+        className="reviews__star"
+      >
+        rating
+      </span>
+       and describe your stay with at least 
+      <b
+        className="reviews__text-amount"
+      >
+        50 characters
+      </b>
+      .
+    </p>
+    <button
+      className="reviews__submit form__submit button"
+      disabled={false}
+      onClick={[Function]}
+      type="submit"
+    >
+      Submit
+    </button>
+  </div>
+</form>
+`;
+
+exports[`Should OfferReviewForm render correctly Should Favorites store render correctly with 3 stars 1`] = `
+<form
+  action="#"
+  className="reviews__form form"
+  method="post"
+>
+  <label
+    className="reviews__label form__label"
+    htmlFor="review"
+  >
+    Your review
+  </label>
+  <div
+    className="reviews__rating-form form__rating"
+    required={true}
+  >
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="5-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="5"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="5-stars"
+      title="perfect"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="4-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="4"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="4-stars"
+      title="good"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={true}
+      className="form__rating-input visually-hidden"
+      id="3-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="3"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="3-stars"
+      title="not bad"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="2-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="2"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="2-stars"
+      title="badly"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="1-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="1"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="1-stars"
+      title="terribly"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+  </div>
+  <textarea
+    className="reviews__textarea form__textarea"
+    id="review"
+    maxLength="300"
+    minLength="50"
+    name="review"
+    onChange={[Function]}
+    placeholder="Tell how was your stay, what you like and what can be improved"
+    required={true}
+  />
+  <div
+    className="reviews__button-wrapper"
+  >
+    <p
+      className="reviews__help"
+    >
+      To submit review please make sure to set 
+      <span
+        className="reviews__star"
+      >
+        rating
+      </span>
+       and describe your stay with at least 
+      <b
+        className="reviews__text-amount"
+      >
+        50 characters
+      </b>
+      .
+    </p>
+    <button
+      className="reviews__submit form__submit button"
+      disabled={false}
+      onClick={[Function]}
+      type="submit"
+    >
+      Submit
+    </button>
+  </div>
+</form>
+`;
+
+exports[`Should OfferReviewForm render correctly Should Favorites store render correctly with 4 stars 1`] = `
+<form
+  action="#"
+  className="reviews__form form"
+  method="post"
+>
+  <label
+    className="reviews__label form__label"
+    htmlFor="review"
+  >
+    Your review
+  </label>
+  <div
+    className="reviews__rating-form form__rating"
+    required={true}
+  >
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="5-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="5"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="5-stars"
+      title="perfect"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={true}
+      className="form__rating-input visually-hidden"
+      id="4-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="4"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="4-stars"
+      title="good"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="3-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="3"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="3-stars"
+      title="not bad"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="2-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="2"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="2-stars"
+      title="badly"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="1-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="1"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="1-stars"
+      title="terribly"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+  </div>
+  <textarea
+    className="reviews__textarea form__textarea"
+    id="review"
+    maxLength="300"
+    minLength="50"
+    name="review"
+    onChange={[Function]}
+    placeholder="Tell how was your stay, what you like and what can be improved"
+    required={true}
+  />
+  <div
+    className="reviews__button-wrapper"
+  >
+    <p
+      className="reviews__help"
+    >
+      To submit review please make sure to set 
+      <span
+        className="reviews__star"
+      >
+        rating
+      </span>
+       and describe your stay with at least 
+      <b
+        className="reviews__text-amount"
+      >
+        50 characters
+      </b>
+      .
+    </p>
+    <button
+      className="reviews__submit form__submit button"
+      disabled={false}
+      onClick={[Function]}
+      type="submit"
+    >
+      Submit
+    </button>
+  </div>
+</form>
+`;
+
+exports[`Should OfferReviewForm render correctly Should Favorites store render correctly with 5 stars 1`] = `
+<form
+  action="#"
+  className="reviews__form form"
+  method="post"
+>
+  <label
+    className="reviews__label form__label"
+    htmlFor="review"
+  >
+    Your review
+  </label>
+  <div
+    className="reviews__rating-form form__rating"
+    required={true}
+  >
+    <input
+      checked={true}
+      className="form__rating-input visually-hidden"
+      id="5-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="5"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="5-stars"
+      title="perfect"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="4-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="4"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="4-stars"
+      title="good"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="3-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="3"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="3-stars"
+      title="not bad"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="2-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="2"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="2-stars"
+      title="badly"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+    <input
+      checked={false}
+      className="form__rating-input visually-hidden"
+      id="1-stars"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="1"
+    />
+    <label
+      className="reviews__rating-label form__rating-label"
+      htmlFor="1-stars"
+      title="terribly"
+    >
+      <svg
+        className="form__star-image"
+        height="33"
+        width="37"
+      >
+        <use
+          xlinkHref="#icon-star"
+        />
+      </svg>
+    </label>
+  </div>
+  <textarea
+    className="reviews__textarea form__textarea"
+    id="review"
+    maxLength="300"
+    minLength="50"
+    name="review"
+    onChange={[Function]}
+    placeholder="Tell how was your stay, what you like and what can be improved"
+    required={true}
+  />
+  <div
+    className="reviews__button-wrapper"
+  >
+    <p
+      className="reviews__help"
+    >
+      To submit review please make sure to set 
+      <span
+        className="reviews__star"
+      >
+        rating
+      </span>
+       and describe your stay with at least 
+      <b
+        className="reviews__text-amount"
+      >
+        50 characters
+      </b>
+      .
+    </p>
+    <button
+      className="reviews__submit form__submit button"
+      disabled={false}
+      onClick={[Function]}
+      type="submit"
+    >
+      Submit
+    </button>
+  </div>
+</form>
+`;

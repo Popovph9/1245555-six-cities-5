@@ -8,13 +8,13 @@ import {getRating} from "../../utils";
 import {STAR_WIDTH, PLACES_SUBCLASS} from "../../const";
 import ListBookmarkButton from "../list-bookmark-button/list-bookmark-button";
 
-const OfferCard = ({className,
+const OfferCard = ({
+  className,
   offers,
   onCardClick,
   setActivePinAction,
   resetActivePinAction,
   getCurrentOfferAction,
-  onOfferClick,
   authorizationStatus,
   changeFavoriteAction,
   refreshOfferList,
@@ -79,10 +79,14 @@ const OfferCard = ({className,
               onMouseDown={() => {
                 getCurrentOfferAction(offer);
               }}
-              onMouseUp={() => {
-                onOfferClick(offer.id);
-                onCardClick();
-              }}
+              onMouseUp={className === PLACES_SUBCLASS ?
+                () => {
+                  refreshNearOffersList(offer.id);
+                  onCardClick();
+                } :
+                () => {
+                  onCardClick();
+                }}
             >
               <a href="#">{offer.headline}</a>
             </h2>
@@ -94,7 +98,6 @@ const OfferCard = ({className,
   );
 };
 
-
 OfferCard.propTypes = {
   className: PropTypes.string.isRequired,
   offers: offersProp,
@@ -104,7 +107,6 @@ OfferCard.propTypes = {
   setActivePinAction: PropTypes.func.isRequired,
   resetActivePinAction: PropTypes.func.isRequired,
   getCurrentOfferAction: PropTypes.func.isRequired,
-  onOfferClick: PropTypes.func,
   changeFavoriteAction: PropTypes.func.isRequired,
   refreshOfferList: PropTypes.func,
   redirectToRouteAction: PropTypes.func,

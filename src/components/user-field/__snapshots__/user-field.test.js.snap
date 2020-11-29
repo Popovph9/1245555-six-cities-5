@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should UserField render correctly Should UserField render correctly when the user is logged-in 1`] = `
+<a
+  className="header__nav-link header__nav-link--profile"
+  href="#"
+>
+  <div
+    className="header__avatar-wrapper user__avatar-wrapper"
+  />
+  <span
+    className="header__user-name user__name"
+    onClick={[Function]}
+  >
+    mockgmail9@gmail.com
+  </span>
+</a>
+`;
+
+exports[`Should UserField render correctly Should UserField render correctly when the user is unauthorized 1`] = `
+<a
+  className="header__nav-link header__nav-link--profile"
+  href="#"
+>
+  <div
+    className="header__avatar-wrapper user__avatar-wrapper"
+  />
+  <span
+    className="header__login"
+    onClick={[Function]}
+  >
+    Sign in
+  </span>
+</a>
+`;

@@ -1,4 +1,12 @@
-import {loadOffers, loadReviews, loadNearOffers, requireAuthorization, getFavorites, changeUser, redirectToRoute, getCurrentOffer} from "./action";
+import {
+  loadOffers,
+  loadReviews,
+  loadNearOffers,
+  requireAuthorization,
+  getFavorites,
+  changeUser,
+  redirectToRoute,
+  getCurrentOffer} from "./action";
 import {adaptOfferToClient, adaptReviewToClient, adaptUserInfoToClient} from "../utils";
 import {AuthorizationStatus, APIRoute, AppRoute} from "../const";
 
@@ -7,6 +15,13 @@ export const fetchOffersList = () => (dispatch, _getState, api) => (
   .then((data) => data.data.map((it) => adaptOfferToClient(it)))
   .then((data) => dispatch(loadOffers(data)))
 );
+
+export const fetchCurrentOffer = (id) => (dispatch, _getState, api) => (
+  api.get(`${APIRoute.HOTELS}/${id}`)
+  .then((data) => adaptOfferToClient(data.data))
+  .then((data) => dispatch(getCurrentOffer(data)))
+);
+
 
 export const fetchFavoriteOffersList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.FAVORITES)
