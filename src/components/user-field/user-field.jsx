@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import {AuthorizationStatus} from "../../const";
 
 const UserField = ({authorizationStatus, currentEmail, onEmailClick, getFavorites}) => {
-
   return (
     <a className="header__nav-link header__nav-link--profile" href="#">
       <div className="header__avatar-wrapper user__avatar-wrapper">

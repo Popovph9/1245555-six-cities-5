@@ -9,29 +9,12 @@ const withInactivePin = (Component) => {
   class WithInactivePin extends PureComponent {
     constructor(props) {
       super(props);
-
-      this.state = {
-        city: [],
-      };
-
       this.map = null;
-    }
-
-    componentDidMount() {
-      const {currentOffer} = this.props;
-
-      this.setState({
-        city: [currentOffer.city.location.latitude, currentOffer.city.location.longitude],
-      });
     }
 
     componentWillUnmount() {
       this.map.remove();
       this.map = null;
-
-      this.setState({
-        city: [],
-      });
     }
 
     componentDidUpdate() {
@@ -42,7 +25,8 @@ const withInactivePin = (Component) => {
         this.map = null;
       }
 
-      const city = this.state.city;
+
+      const city = [currentOffer.city.location.latitude, currentOffer.city.location.longitude];
 
       const zoom = 12;
 

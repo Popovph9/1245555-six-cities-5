@@ -5,35 +5,23 @@ import PropTypes from "prop-types";
 import offersProp from "../../store/data-props/offers.prop";
 import {PIN_URL, PIN_ACTIVE_URL, PIN_SIZES} from "../../const";
 
+const TEST_KEY = 1;
+
 const withActivePin = (Component) => {
   class WithActivePin extends PureComponent {
     constructor(props) {
       super(props);
 
-      this.state = {
-        city: [],
-        name: ``,
-      };
-
       this.map = null;
-    }
-
-    componentDidMount() {
-      const {offers} = this.props;
-
-      this.setState({
-        city: [offers[0].city.location.latitude, offers[0].city.location.longitude],
-      });
     }
 
     componentWillUnmount() {
       this.map.remove();
       this.map = null;
+    }
 
-      this.setState({
-        city: [],
-        name: ``,
-      });
+    componentDidMount() {
+
     }
 
     componentDidUpdate() {
@@ -93,6 +81,7 @@ const withActivePin = (Component) => {
     render() {
       return (
         <Component
+          key={TEST_KEY}
           {...this.props}
         />
       );

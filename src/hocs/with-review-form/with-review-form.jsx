@@ -52,6 +52,10 @@ const withReviewForm = (Component) => {
         }),
       ]).then(() => {
         this.commentRef.current.value = ``;
+        this.setState({
+          grade: null,
+          text: ``,
+        });
         this.commentRef.current.removeAttribute(`disabled`, `disabled`);
       });
     }

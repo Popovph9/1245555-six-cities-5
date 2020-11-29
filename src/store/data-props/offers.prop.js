@@ -29,5 +29,5 @@ export default PropTypes.arrayOf(PropTypes.shape({
   isFavorite: PropTypes.bool.isRequired,
   isPremium: PropTypes.bool.isRequired,
   guests: PropTypes.number.isRequired,
-  offers: PropTypes.arrayOf(PropTypes.string).isRequired,
-})).isRequired;
+  offers: PropTypes.arrayOf(PropTypes.string),
+}));

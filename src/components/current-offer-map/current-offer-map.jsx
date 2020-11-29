@@ -9,4 +9,6 @@ const CurrentOfferMap = () => {
   );
 };
 
+export {CurrentOfferMap};
+
 export default withInactivePin(React.memo(CurrentOfferMap));

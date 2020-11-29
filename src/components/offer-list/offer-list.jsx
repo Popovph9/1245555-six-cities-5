@@ -6,7 +6,7 @@ import PlacesOfferCard from "../places-offer-card/places-offer-card";
 import OfferCard from "../offer-card/offer-card";
 import {CITIES_CLASS, PLACES_CLASS} from "../../const";
 
-const OfferList = ({offers, onCardClick, className, onOfferClick, refreshOfferList, refreshNearOffersList}) => {
+const OfferList = ({offers, onCardClick, className, refreshOfferList, refreshNearOffersList}) => {
   switch (className) {
     case CITIES_CLASS:
       return (
@@ -14,7 +14,6 @@ const OfferList = ({offers, onCardClick, className, onOfferClick, refreshOfferLi
           <CitiesOfferCard
             offers={offers}
             onCardClick={onCardClick}
-            onOfferClick={onOfferClick}
             refreshOfferList={refreshOfferList}
           />
         </div>
@@ -25,7 +24,6 @@ const OfferList = ({offers, onCardClick, className, onOfferClick, refreshOfferLi
           <PlacesOfferCard
             offers={offers}
             onCardClick={onCardClick}
-            onOfferClick={onOfferClick}
             refreshOfferList={refreshOfferList}
             refreshNearOffersList={refreshNearOffersList}
           />
@@ -37,7 +35,6 @@ const OfferList = ({offers, onCardClick, className, onOfferClick, refreshOfferLi
           <OfferCard
             offers={offers}
             onCardClick={onCardClick}
-            onOfferClick={onOfferClick}
             refreshOfferList={refreshOfferList}
           />
         </div>
@@ -50,7 +47,6 @@ OfferList.propTypes = {
   offers: offersProp,
   className: PropTypes.string.isRequired,
   onCardClick: PropTypes.func.isRequired,
-  onOfferClick: PropTypes.func,
   refreshOfferList: PropTypes.func,
   refreshNearOffersList: PropTypes.func,
 };

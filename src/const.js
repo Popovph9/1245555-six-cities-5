@@ -24,6 +24,8 @@ export const MAX_RENDERED_PHOTOS = 6;
 
 export const STAR_WIDTH = 20;
 
+export const FIRST_HOTEL_INDEX = 1;
+
 export const MIN_REVIEW_LENGTH = `50`;
 
 export const MAX_REVIEW_LENGTH = `300`;

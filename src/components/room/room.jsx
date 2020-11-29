@@ -11,7 +11,9 @@ import CurrentOfferItem from "../current-offer-item/current-offer-item";
 import PlacesOfferList from "../places-offer-list/places-offer-list";
 import CurrentOfferMap from "../current-offer-map/current-offer-map";
 import UserField from "../user-field/user-field";
+import withPreloadedData from "../../hocs/with-preloaded-data/with-preloaded-data";
 import {MAX_RENDERED_PHOTOS} from "../../const";
+
 
 const Room = (props) => {
   const {
@@ -23,7 +25,6 @@ const Room = (props) => {
     onCardClick,
     changeFavoriteAction,
     redirectToRouteAction,
-    onOfferClick,
     authorizationStatus,
     currentUser,
     getFavorites,
@@ -91,7 +92,6 @@ const Room = (props) => {
             <PlacesOfferList
               offers={nearOffers}
               onCardClick={onCardClick}
-              onOfferClick={onOfferClick}
               refreshOfferList={refreshOfferList}
               refreshNearOffersList={refreshNearOffersList}
             />
@@ -100,6 +100,8 @@ const Room = (props) => {
       </main>
     </div>
   );
+
+
 };
 
 Room.propTypes = {
@@ -112,7 +114,6 @@ Room.propTypes = {
   onLogoClick: PropTypes.func.isRequired,
   onCardClick: PropTypes.func.isRequired,
   changeFavoriteAction: PropTypes.func.isRequired,
-  onOfferClick: PropTypes.func,
   redirectToRouteAction: PropTypes.func.isRequired,
   getFavorites: PropTypes.func.isRequired,
   refreshOfferList: PropTypes.func.isRequired,
@@ -137,4 +138,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export {Room};
-export default connect(mapStateToProps, mapDispatchToProps)(React.memo(Room));
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(withPreloadedData(Room)));

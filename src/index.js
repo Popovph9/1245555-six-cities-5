@@ -2,11 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import {createStore, applyMiddleware} from "redux";
 import {composeWithDevTools} from "redux-devtools-extension";
-import {fetchOffersList, fetchReviewsList, fetchNearOffersList, checkAuth, fetchFavoriteOffersList} from "./store/api-actions";
+import {fetchOffersList, fetchReviewsList, fetchNearOffersList, checkAuth, fetchFavoriteOffersList, fetchCurrentOffer} from "./store/api-actions";
 import {createAPI} from "./services/api";
 import {requireAuthorization} from "./store/action";
 import {Provider} from "react-redux";
-import {AuthorizationStatus} from "./const";
+import {AuthorizationStatus, FIRST_HOTEL_INDEX} from "./const";
 import App from "./components/app/app";
 import thunk from "redux-thunk";
 import {redirect} from "./store/middlewares/redirect";
@@ -28,12 +28,16 @@ const store = createStore(
 Promise.all([
   store.dispatch(fetchOffersList()),
   store.dispatch(checkAuth()),
+  store.dispatch(fetchReviewsList(FIRST_HOTEL_INDEX)),
+  store.dispatch(fetchNearOffersList(FIRST_HOTEL_INDEX)),
+  store.dispatch(fetchCurrentOffer(FIRST_HOTEL_INDEX)),
 ])
 .then(() => {
   ReactDOM.render(
       <Provider store={store}>
         <App
-          onOfferClick={(id) => {
+          loadOfferData={(id) => {
+            store.dispatch(fetchCurrentOffer(id));
             store.dispatch(fetchReviewsList(id));
             store.dispatch(fetchNearOffersList(id));
           }}
@@ -44,6 +48,7 @@ Promise.all([
             store.dispatch(fetchOffersList());
           }}
           refreshNearOffersList={(id) => {
+            store.dispatch(fetchReviewsList(id));
             store.dispatch(fetchNearOffersList(id));
           }}
         />

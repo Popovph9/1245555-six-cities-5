@@ -6,7 +6,6 @@ import {DEFAULT_SORTING} from "../../../const";
 const initialState = {
   currentSorting: DEFAULT_SORTING,
   activePin: null,
-  favoriteOffers: [],
   currentOffer: {},
   reviews: [],
 };
@@ -29,19 +28,13 @@ const offersState = (state = initialState, action) => {
       return extend(state, {
         currentOffer: action.payload,
       });
-    case ActionType.CHANGE_FAVORITE:
-      return (Number(action.payload));
     case ActionType.LOAD_REVIEWS:
       return extend(state, {
         reviews: action.payload,
       });
-    case ActionType.GET_FAVORITES:
+    case ActionType.LOAD_CURRENT_OFFER:
       return extend(state, {
-        favoriteOffers: action.payload,
-      });
-    case ActionType.CLEAR_REVIEW_LIST:
-      return extend(state, {
-        reviews: action.payload,
+        currentOffer: action.payload,
       });
   }
 

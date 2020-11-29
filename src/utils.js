@@ -156,3 +156,10 @@ export const getAction = (authorizationStatus, redirectToRoute, changeFavoriteAc
       );
   }
 };
+
+export const getValue = (obj) => {
+  let value = Object.values(obj);
+  return Number(value[0].substring(1));
+};
+
+export const noop = () => {};
