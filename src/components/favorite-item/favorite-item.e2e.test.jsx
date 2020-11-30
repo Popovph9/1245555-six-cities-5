@@ -6,7 +6,7 @@ import {MOCK_FAVORITE_CURRENT_OFFER} from "../../test-data";
 
 configure({adapter: new Adapter()});
 
-it(`Click on offer card headline should calls proper function`, () => {
+it(`Click on offer card should calls proper function`, () => {
   const getCurrentOfferAction = jest.fn();
   const onCardClick = jest.fn();
 
@@ -17,7 +17,7 @@ it(`Click on offer card headline should calls proper function`, () => {
   >
   </FavoriteItem>);
 
-  wrapper.find(`h2`).at(0).simulate(`click`);
+  wrapper.find(`article`).at(0).simulate(`click`);
   expect(onCardClick).toHaveBeenCalledTimes(1);
 });
 

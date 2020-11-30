@@ -3,6 +3,7 @@
 exports[`Should FavoriteItem render correctly 1`] = `
 <article
   className="favorites__card place-card"
+  onClick={[Function]}
   onMouseEnter={[Function]}
 >
   <div
@@ -83,7 +84,6 @@ exports[`Should FavoriteItem render correctly 1`] = `
     </div>
     <h2
       className="place-card__name"
-      onClick={[Function]}
     >
       <a
         href="#"

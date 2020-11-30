@@ -37,12 +37,6 @@ const withReviewForm = (Component) => {
 
       evt.preventDefault();
 
-      sendReview({
-        id,
-        comment: this.state.text,
-        rating: this.state.grade,
-      });
-
       this.commentRef.current.setAttribute(`disabled`, `disabled`);
       Promise.all([
         sendReview({

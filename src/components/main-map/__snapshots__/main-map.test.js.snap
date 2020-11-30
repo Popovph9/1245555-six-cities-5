@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should MainMap render correctly 1`] = `
+exports[`Should MainMap2 render correctly 1`] = `
 <div
   id="map"
 />
