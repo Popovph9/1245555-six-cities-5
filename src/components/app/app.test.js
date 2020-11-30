@@ -2,8 +2,6 @@ import React from "react";
 import renderer from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import {configure} from 'enzyme';
-import Adapter from "enzyme-adapter-react-16";
 import {App} from "./app";
 import {
   MOCK_CITY,
@@ -13,8 +11,6 @@ import {
   MOCK_FAVORITE_CURRENT_OFFER} from "../../test-data";
 import {AuthorizationStatus, DEFAULT_SORTING} from "../../const";
 import {noop} from "../../utils";
-
-configure({adapter: new Adapter()});
 
 describe(`Should App connected to store render correctly`, () => {
   const mockStore = configureStore([]);
