@@ -2,14 +2,13 @@ import React from "react";
 import renderer from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import {shallow, configure} from 'enzyme';
+import {configure} from 'enzyme';
 import Adapter from "enzyme-adapter-react-16";
 import {App} from "./app";
 import {
   MOCK_CITY,
   MOCK_NO_USER,
   MOCK_USER, MOCK_OFFERS,
-  MOCK_CURRENT_OFFER,
   MOCK_OFFERS_FILTERED,
   MOCK_FAVORITE_CURRENT_OFFER} from "../../test-data";
 import {AuthorizationStatus, DEFAULT_SORTING} from "../../const";
@@ -86,39 +85,6 @@ describe(`Should App connected to store render correctly`, () => {
     expect(AppComponent).toMatchSnapshot();
   });
 
-  it(`Should App render correctly with offers when the user is unauthorized`, () => {
-    store = mockStore({
-      DATA: {
-        allOffers: MOCK_OFFERS,
-        offers: MOCK_OFFERS_FILTERED,
-        city: MOCK_CITY,
-      },
-      STATE: {
-        currentOffer: MOCK_CURRENT_OFFER,
-        currentSorting: DEFAULT_SORTING,
-      },
-      USER: {
-        authorizationStatus: AuthorizationStatus.NO_AUTH,
-        currentUser: MOCK_NO_USER,
-      },
-    });
-
-    AppComponent = renderer.create(shallow(
-        <Provider store={store}>
-          <App
-            currentOffer={MOCK_CURRENT_OFFER}
-            getOffersAction={noop}
-            loadOfferData={noop}
-            getFavorites={noop}
-            refreshOfferList={noop}
-            refreshNearOffersList={noop}
-          >
-          </App>
-        </Provider>)).toJSON();
-
-    expect(AppComponent).toMatchSnapshot();
-  });
-
   it(`Should App render correctly with offers when the user is logged in`, () => {
     store = mockStore({
       DATA: {
@@ -136,7 +102,7 @@ describe(`Should App connected to store render correctly`, () => {
       },
     });
 
-    AppComponent = renderer.create(shallow(
+    AppComponent = renderer.create(
         <Provider store={store}>
           <App
             currentOffer={MOCK_FAVORITE_CURRENT_OFFER}
@@ -147,7 +113,7 @@ describe(`Should App connected to store render correctly`, () => {
             refreshNearOffersList={noop}
           >
           </App>
-        </Provider>)).toJSON();
+        </Provider>).toJSON();
 
     expect(AppComponent).toMatchSnapshot();
   });

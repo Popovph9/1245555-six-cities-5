@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {CurrentOfferMap} from "./current-offer-map";
+import CurrentOfferMap from "./current-offer-map";
 import {MOCK_OFFERS, MOCK_CURRENT_OFFER} from "../../test-data";
 
 it(`Should CurrentOfferMap render correctly`, () => {

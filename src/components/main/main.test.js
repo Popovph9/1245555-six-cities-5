@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import {shallow, configure} from 'enzyme';
+import {configure} from 'enzyme';
 import Adapter from "enzyme-adapter-react-16";
 import {Main} from "./main";
 import {
@@ -11,9 +11,7 @@ import {
   MOCK_USER,
   MOCK_SORTING,
   MOCK_OFFERS,
-  MOCK_CURRENT_OFFER,
-  MOCK_FAVORITE_OFFERS,
-  MOCK_FAVORITE_CURRENT_OFFER} from "../../test-data";
+  MOCK_CURRENT_OFFER} from "../../test-data";
 import {AuthorizationStatus} from "../../const";
 import {noop} from "../../utils";
 
@@ -23,6 +21,10 @@ describe(`Should Main connected to store render correctly`, () => {
   const mockStore = configureStore([]);
   let store = null;
   let MainComponent = null;
+
+  afterEach(() => {
+    MainComponent = null;
+  });
 
   it(`Should Main render correctly without offers when the user is unauthorized`, () => {
     store = mockStore({});
@@ -91,7 +93,7 @@ describe(`Should Main connected to store render correctly`, () => {
       },
     });
 
-    MainComponent = renderer.create(shallow(
+    MainComponent = renderer.create(
         <Provider store={store}>
           <Main
             onEmailClick = {noop}
@@ -109,41 +111,7 @@ describe(`Should Main connected to store render correctly`, () => {
             currentSorting={MOCK_SORTING}
             authorizationStatus={AuthorizationStatus.NO_AUTH}
           />
-        </Provider>)).toJSON();
-
-    expect(MainComponent).toMatchSnapshot();
-  });
-
-  it(`Should Main render correctly when the user is logged in`, () => {
-    store = mockStore({
-      USER: {
-        authorizationStatus: AuthorizationStatus.NO_AUTH,
-        currentUser: MOCK_USER,
-      },
-      STATE: {
-        currentOffer: MOCK_FAVORITE_CURRENT_OFFER,
-      },
-    });
-
-    MainComponent = renderer.create(shallow(
-        <Provider store={store}>
-          <Main
-            onEmailClick = {noop}
-            onCardClick={noop}
-            getFavorites={noop}
-            refreshOfferList={noop}
-            changeCityAction={noop}
-            changeSortingAction={noop}
-            getOffersAction={noop}
-            sortOffersAction={noop}
-            activePin={null}
-            currentUser={MOCK_USER}
-            offers={MOCK_FAVORITE_OFFERS}
-            city={MOCK_CITY}
-            currentSorting={MOCK_SORTING}
-            authorizationStatus={AuthorizationStatus.AUTH}
-          />
-        </Provider>)).toJSON();
+        </Provider>).toJSON();
 
     expect(MainComponent).toMatchSnapshot();
   });

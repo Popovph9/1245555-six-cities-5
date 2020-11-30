@@ -44,8 +44,7 @@ describe(`Should Room connected to store render correctly`, () => {
           >
           </Room>
         </Provider>
-    )
-  .toJSON();
+    ).toJSON();
 
     expect(RoomComponent).toMatchSnapshot();
   });
