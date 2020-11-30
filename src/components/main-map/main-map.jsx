@@ -64,6 +64,7 @@ const MainMap = ({offers, activePin}) => {
 
   return (
     <div
+      style={{height: `100%`}}
       id="map"
     ></div>
   );

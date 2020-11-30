@@ -62,6 +62,7 @@ const CurrentOfferMap = ({offers, currentOffer}) => {
 
   return (
     <div
+      style={{height: `100%`}}
       id="map"
     ></div>
   );

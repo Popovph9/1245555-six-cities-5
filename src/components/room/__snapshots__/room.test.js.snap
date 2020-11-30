@@ -574,6 +574,11 @@ exports[`Should Room connected to store render correctly Should Room render corr
       >
         <div
           id="map"
+          style={
+            Object {
+              "height": "100%",
+            }
+          }
         />
       </section>
     </section>
@@ -1192,6 +1197,11 @@ exports[`Should Room connected to store render correctly Should Room render corr
       >
         <div
           id="map"
+          style={
+            Object {
+              "height": "100%",
+            }
+          }
         />
       </section>
     </section>

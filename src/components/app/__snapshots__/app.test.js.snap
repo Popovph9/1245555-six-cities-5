@@ -464,6 +464,11 @@ exports[`Should App connected to store render correctly Should App render correc
           >
             <div
               id="map"
+              style={
+                Object {
+                  "height": "100%",
+                }
+              }
             />
           </section>
         </div>

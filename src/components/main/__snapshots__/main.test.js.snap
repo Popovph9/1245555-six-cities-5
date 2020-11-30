@@ -565,6 +565,11 @@ exports[`Should Main connected to store render correctly Should Main render corr
           >
             <div
               id="map"
+              style={
+                Object {
+                  "height": "100%",
+                }
+              }
             />
           </section>
         </div>
