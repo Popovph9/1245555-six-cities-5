@@ -104,5 +104,7 @@ it(`Click on offer card title should calls proper function with the secondary pa
 
   wrapper.find(`h2`).at(0).simulate(`mouseup`);
   expect(refreshNearOffersList).toHaveBeenCalledTimes(1);
-  expect(onCardClick).toHaveBeenCalledTimes(1);
+
+  wrapper.find(`h2`).at(0).simulate(`mouseup`);
+  expect(onCardClick).toHaveBeenCalledTimes(2);
 });

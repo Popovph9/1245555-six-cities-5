@@ -99,6 +99,7 @@ exports[`Should Favorites connected to store render correctly Should Favorites r
             >
               <article
                 className="favorites__card place-card"
+                onClick={[Function]}
                 onMouseEnter={[Function]}
               >
                 <div
@@ -179,7 +180,6 @@ exports[`Should Favorites connected to store render correctly Should Favorites r
                   </div>
                   <h2
                     className="place-card__name"
-                    onClick={[Function]}
                   >
                     <a
                       href="#"
@@ -220,6 +220,7 @@ exports[`Should Favorites connected to store render correctly Should Favorites r
             >
               <article
                 className="favorites__card place-card"
+                onClick={[Function]}
                 onMouseEnter={[Function]}
               >
                 <div
@@ -300,7 +301,6 @@ exports[`Should Favorites connected to store render correctly Should Favorites r
                   </div>
                   <h2
                     className="place-card__name"
-                    onClick={[Function]}
                   >
                     <a
                       href="#"

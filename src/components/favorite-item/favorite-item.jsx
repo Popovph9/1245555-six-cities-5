@@ -14,6 +14,9 @@ const FavoriteItem = ({offer, onCardClick, getCurrentOfferAction}) => {
       onMouseEnter={() => {
         getCurrentOfferAction(offer);
       }}
+      onClick={() => {
+        onCardClick();
+      }}
     >
       <div className="favorites__image-wrapper place-card__image-wrapper">
         <a href="#">
@@ -41,9 +44,6 @@ const FavoriteItem = ({offer, onCardClick, getCurrentOfferAction}) => {
         </div>
         <h2
           className="place-card__name"
-          onClick={() => {
-            onCardClick();
-          }}
         >
           <a href="#">{offer.headline}</a>
         </h2>

@@ -44,9 +44,15 @@ const OfferCard = ({
           <div className={`${className}__image-wrapper place-card__image-wrapper`}>
             <a
               href="#"
-              onClick={(evt) => {
-                evt.preventDefault();
-              }}
+              onClick={className !== PLACES_SUBCLASS ?
+                () => {
+                  onCardClick();
+                } :
+                () => {
+                  onCardClick();
+                  getCurrentOfferAction(offer);
+                }
+              }
             >
               <img className="place-card__image" src={offer.picture} width="260" height="200" alt="Place image"/>
             </a>
@@ -86,7 +92,8 @@ const OfferCard = ({
                 } :
                 () => {
                   onCardClick();
-                }}
+                }
+              }
             >
               <a href="#">{offer.headline}</a>
             </h2>

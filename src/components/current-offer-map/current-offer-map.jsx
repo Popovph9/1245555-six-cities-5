@@ -12,7 +12,7 @@ const CurrentOfferMap = ({offers, currentOffer}) => {
     if (hotel !== currentOffer) {
       const city = [currentOffer.city.location.latitude, currentOffer.city.location.longitude];
 
-      const zoom = 12;
+      const zoom = currentOffer.city.location.zoom;
 
       const icon = L.icon({
         iconUrl: PIN_URL,
